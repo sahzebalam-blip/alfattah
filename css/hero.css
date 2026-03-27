@@ -1,32 +1,41 @@
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 110px);
   display: flex;
   align-items: center;
+  padding-top: 118px;
+  padding-bottom: 58px;
+}
+
+.hero-copy {
+  max-width: 680px;
+}
+
+.hero-ownerline {
+  margin-bottom: 18px;
+  color: rgba(241, 201, 127, 0.86);
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .hero h1 {
-  font-size: 56px;
-  max-width: 12ch;
+  font-size: clamp(64px, 10vw, 112px);
+  max-width: 8.2ch;
+  margin-bottom: 18px;
 }
 
 .hero-lead {
-  color: var(--text-dim);
-  margin-top: 14px;
+  max-width: 58ch;
+  margin-bottom: 18px;
+}
+
+.hero-subline {
+  max-width: 42ch;
+  margin-bottom: 28px;
 }
 
 .hero-actions {
-  margin-top: 20px;
   display: flex;
+  align-items: center;
   gap: 14px;
-}
-
-.btn {
-  padding: 12px 18px;
-  border-radius: 20px;
-  border: 1px solid var(--line-soft);
-}
-
-.btn-primary {
-  background: var(--gold);
-  color: black;
 }
