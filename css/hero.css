@@ -310,3 +310,59 @@
   position: relative;
   z-index: 1;
 }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: 680px;
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 520px;
+}
+
+#hero-sunrise-canvas {
+  width: 100%;
+  max-width: 560px;
+  height: 520px;
+  border-radius: 32px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* tablet */
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .hero-visual {
+    order: 2;
+    min-height: 380px;
+  }
+
+  #hero-sunrise-canvas {
+    height: 380px;
+  }
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .hero-visual {
+    min-height: 300px;
+  }
+
+  #hero-sunrise-canvas {
+    height: 300px;
+    border-radius: 24px;
+  }
+}
