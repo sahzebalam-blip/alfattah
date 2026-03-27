@@ -50,7 +50,12 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+    <link rel="stylesheet" href="css/ecosystem.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/responsive.css" />
 
     <script type="application/ld+json">
@@ -60,6 +65,10 @@
         "name": "Zubolaa",
         "url": "https://zubolaa.com/",
         "logo": "https://zubolaa.com/assets/logo.png",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Al Fattah Endless Horizons"
+        },
         "sameAs": [
           "https://instagram.com/",
           "https://linkedin.com/",
@@ -74,10 +83,25 @@
   <body>
     <div class="site-shell">
       <div class="page-overlay" aria-hidden="true"></div>
+      <div class="ambient-bg" aria-hidden="true">
+        <span class="spark s1"></span>
+        <span class="spark s2"></span>
+        <span class="spark s3"></span>
+        <span class="spark s4"></span>
+        <span class="spark s5"></span>
+        <span class="spark s6"></span>
+        <span class="spark s7"></span>
+        <span class="spark s8"></span>
+        <span class="spark s9"></span>
+        <span class="spark s10"></span>
+      </div>
 
       <header class="site-header">
         <nav class="site-nav" aria-label="Primary navigation">
-          <a href="#home" class="brand-mark" aria-label="Zubolaa Home">Zubolaa</a>
+          <a href="#home" class="brand-mark" aria-label="Zubolaa Home">
+            <span class="brand-main">Zubolaa</span>
+            <span class="brand-sub">By Al Fattah Endless Horizons</span>
+          </a>
 
           <button
             class="nav-toggle"
@@ -121,6 +145,7 @@
         <section class="hero section" id="home">
           <div class="hero-copy">
             <p class="eyebrow">Structured Intelligence for Global Execution</p>
+            <p class="hero-ownerline">A system by Al Fattah Endless Horizons</p>
             <h1>Clarity changes everything.</h1>
 
             <p class="hero-lead">
@@ -163,9 +188,9 @@
             </div>
             <div>
               <p>
-                This is not a generic learning site or a disconnected product stack.
-                It is a connected system where each branch exists to move thought
-                into action.
+                Developed under Al Fattah Endless Horizons, this is not a generic
+                learning site or a disconnected product stack. It is a connected
+                system where each branch exists to move thought into action.
               </p>
             </div>
           </div>
@@ -179,22 +204,27 @@
 
           <div class="principles-grid">
             <article class="principle-item">
+              <span class="principle-icon"></span>
               <h3>Clarity</h3>
               <p>See clearly before moving.</p>
             </article>
             <article class="principle-item">
+              <span class="principle-icon"></span>
               <h3>Structure</h3>
               <p>Turn complexity into usable systems.</p>
             </article>
             <article class="principle-item">
+              <span class="principle-icon"></span>
               <h3>Discipline</h3>
               <p>Stay aligned under pressure.</p>
             </article>
             <article class="principle-item">
+              <span class="principle-icon"></span>
               <h3>Execution</h3>
               <p>Convert understanding into action.</p>
             </article>
             <article class="principle-item">
+              <span class="principle-icon"></span>
               <h3>Direction</h3>
               <p>Move with purpose, not drift.</p>
             </article>
@@ -219,7 +249,7 @@
                 role="tab"
                 aria-selected="true"
               >
-                <span class="panel-index">01</span>
+                <span class="panel-icon academy-icon"></span>
                 <span class="panel-title">Academy</span>
                 <span class="panel-line">Build clarity, discipline, and durable thinking.</span>
               </button>
@@ -231,7 +261,7 @@
                 role="tab"
                 aria-selected="false"
               >
-                <span class="panel-index">02</span>
+                <span class="panel-icon markets-icon"></span>
                 <span class="panel-title">Markets</span>
                 <span class="panel-line">Interpret structure, conditions, and precision.</span>
               </button>
@@ -243,7 +273,7 @@
                 role="tab"
                 aria-selected="false"
               >
-                <span class="panel-index">03</span>
+                <span class="panel-icon participation-icon"></span>
                 <span class="panel-title">Participation</span>
                 <span class="panel-line">Engage through defined systems and controlled access.</span>
               </button>
@@ -255,7 +285,7 @@
                 role="tab"
                 aria-selected="false"
               >
-                <span class="panel-index">04</span>
+                <span class="panel-icon token-icon"></span>
                 <span class="panel-title">Token</span>
                 <span class="panel-line">Enable value flow, alignment, and future utility.</span>
               </button>
@@ -267,7 +297,7 @@
                 role="tab"
                 aria-selected="false"
               >
-                <span class="panel-index">05</span>
+                <span class="panel-icon labs-icon"></span>
                 <span class="panel-title">Labs</span>
                 <span class="panel-line">Prototype intelligence tools, systems, and automation.</span>
               </button>
@@ -359,13 +389,13 @@
           </div>
 
           <div class="logic-pill-flow" aria-label="Connection Logic Flow">
-            <span class="logic-pill">Idea</span>
+            <span class="logic-pill"><span class="logic-icon"></span>Idea</span>
             <span class="logic-divider"></span>
-            <span class="logic-pill">Logic</span>
+            <span class="logic-pill"><span class="logic-icon"></span>Logic</span>
             <span class="logic-divider"></span>
-            <span class="logic-pill">Execution</span>
+            <span class="logic-pill"><span class="logic-icon"></span>Execution</span>
             <span class="logic-divider"></span>
-            <span class="logic-pill">Zubolaa Intelligence</span>
+            <span class="logic-pill"><span class="logic-icon"></span>Zubolaa Intelligence</span>
           </div>
 
           <p class="section-lead center-text">
@@ -379,6 +409,7 @@
         <div class="footer-top">
           <div class="footer-brand">
             <h2>Zubolaa</h2>
+            <p class="footer-ownerline">By Al Fattah Endless Horizons</p>
             <p>
               A structured intelligence system built for clarity, transformation,
               and execution.
