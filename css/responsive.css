@@ -1,3 +1,4 @@
+/* ---------- Large tablet / compact laptop ---------- */
 @media (max-width: 1120px) {
   .principles-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -12,92 +13,22 @@
   }
 
   .footer-top {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 24px;
   }
 }
 
-@media (max-width: 840px) {
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
   :root {
-    --container: min(100% - 28px, 1000px);
-  }
-
-  .site-header {
-    top: 10px;
-    padding-top: 10px;
-  }
-
-  .site-nav {
-    border-radius: 30px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding: 14px 16px;
-  }
-
-  .brand-mark {
-    min-width: auto;
-  }
-
-  .brand-main {
-    font-size: 1.4rem;
-  }
-
-  .brand-sub {
-    font-size: 0.62rem;
-  }
-
-  .nav-toggle {
-    display: inline-flex;
-    margin-left: auto;
-  }
-
-  .nav-menu {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    padding-top: 10px;
-  }
-
-  .nav-menu.open {
-    display: flex;
-  }
-
-  .nav-dropdown,
-  .dropdown-toggle,
-  .dropdown-menu {
-    width: 100%;
-  }
-
-  .dropdown-menu {
-    position: static;
-    margin-top: 10px;
-    min-width: auto;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    display: none;
-  }
-
-  .nav-dropdown.open .dropdown-menu {
-    display: grid;
-  }
-
-  .hero {
-    min-height: auto;
-    padding-top: 130px;
-    padding-bottom: 40px;
-  }
-
-  .hero h1 {
-    max-width: 9ch;
+    --container: min(100% - 32px, 100%);
   }
 
   .about.section-card,
   .connection-logic.section-card,
   .site-footer,
   .ecosystem-shell {
-    padding: 22px;
+    padding: 24px;
   }
 
   .two-column-grid,
@@ -109,44 +40,56 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .logic-pill-flow {
-    gap: 10px;
-    justify-content: flex-start;
-  }
-
-  .logic-divider {
-    width: 1px;
-    height: 24px;
-    background: linear-gradient(180deg, rgba(241,201,127,0.2), rgba(122,191,255,0.5));
-  }
-
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
   }
 }
 
-@media (max-width: 560px) {
-  .hero h1,
-  .section-head h2,
-  .ecosystem-content h3 {
-    max-width: none;
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  :root {
+    --container: min(100% - 20px, 100%);
   }
 
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn {
-    width: 100%;
+  .about.section-card,
+  .connection-logic.section-card,
+  .site-footer,
+  .ecosystem-shell,
+  .ecosystem-display {
+    padding: 20px;
   }
 
   .principles-grid {
     grid-template-columns: 1fr;
   }
 
+  .footer-top {
+    gap: 18px;
+  }
+
+  .footer-links,
+  .footer-socials {
+    gap: 10px;
+  }
+}
+
+/* ---------- Small mobile ---------- */
+@media (max-width: 420px) {
+  :root {
+    --container: min(100% - 16px, 100%);
+  }
+
+  .about.section-card,
+  .connection-logic.section-card,
+  .site-footer,
+  .ecosystem-shell,
   .ecosystem-display {
-    padding: 22px;
+    padding: 18px;
+  }
+
+  .footer-top {
+    gap: 16px;
   }
 }
