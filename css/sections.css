@@ -1,25 +1,64 @@
 .transition-strip {
-  padding-top: 18px;
-  padding-bottom: 34px;
+  position: relative;
+  padding-top: 12px;
+  padding-bottom: 30px;
 }
 
 .transition-line {
-  width: min(100%, 900px);
+  position: relative;
+  width: min(100%, 920px);
   margin: 0 auto;
   text-align: center;
   padding: 22px 24px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.018);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.016));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.transition-line::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(241, 201, 127, 0.28),
+    rgba(122, 191, 255, 0.22),
+    transparent
+  );
+  opacity: 0.82;
+}
+
+.transition-line p {
+  position: relative;
+  z-index: 1;
+  max-width: 58ch;
+  margin: 0 auto;
+  color: rgba(244, 241, 234, 0.74);
 }
 
 .about {
-  padding-top: 44px;
+  padding-top: 38px;
+}
+
+.about .section-head {
+  margin-bottom: 26px;
+}
+
+.about .section-lead {
+  max-width: 52ch;
 }
 
 .principles {
-  padding-top: 34px;
-  padding-bottom: 56px;
+  padding-top: 28px;
+  padding-bottom: 52px;
 }
 
 .principles-grid {
@@ -34,14 +73,36 @@
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.075);
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.018));
-  transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.016));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    background 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.principle-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(241, 201, 127, 0.08),
+    transparent 42%,
+    rgba(122, 191, 255, 0.08)
+  );
+  opacity: 0.32;
 }
 
 .principle-item:hover {
-  transform: translateY(-3px);
-  border-color: rgba(122, 191, 255, 0.22);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+  transform: translateY(-4px);
+  border-color: rgba(122, 191, 255, 0.2);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
 }
 
 .principle-icon {
@@ -50,35 +111,63 @@
   height: 14px;
   margin-bottom: 18px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #ffffff 0%, var(--blue) 38%, rgba(122,191,255,0.18) 100%);
+  background: radial-gradient(
+    circle at 35% 35%,
+    #ffffff 0%,
+    var(--blue) 38%,
+    rgba(122, 191, 255, 0.18) 100%
+  );
   box-shadow:
-    0 0 18px rgba(122, 191, 255, 0.34),
-    0 0 8px rgba(241, 201, 127, 0.14);
+    0 0 18px rgba(122, 191, 255, 0.28),
+    0 0 8px rgba(241, 201, 127, 0.12);
   animation: subtleIconPulse 4.8s ease-in-out infinite;
 }
 
 .principle-item:nth-child(2) .principle-icon,
 .principle-item:nth-child(5) .principle-icon {
-  background: radial-gradient(circle at 35% 35%, #fffaf1 0%, var(--gold) 38%, rgba(241,201,127,0.14) 100%);
+  background: radial-gradient(
+    circle at 35% 35%,
+    #fffaf1 0%,
+    var(--gold) 38%,
+    rgba(241, 201, 127, 0.14) 100%
+  );
   box-shadow:
-    0 0 16px rgba(241, 201, 127, 0.2),
-    0 0 10px rgba(122, 191, 255, 0.12);
+    0 0 16px rgba(241, 201, 127, 0.18),
+    0 0 10px rgba(122, 191, 255, 0.1);
 }
 
 @keyframes subtleIconPulse {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.14); opacity: 1; }
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.88;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
 }
 
 .principle-item h3 {
-  font-size: 1.18rem;
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1rem, 1.15vw, 1.16rem);
   margin-bottom: 12px;
   color: #f5f4ef;
+  letter-spacing: -0.02em;
+}
+
+.principle-item p {
+  position: relative;
+  z-index: 1;
 }
 
 .connection-logic {
-  padding-top: 30px;
-  padding-bottom: 36px;
+  padding-top: 24px;
+  padding-bottom: 34px;
+}
+
+.connection-logic .section-head {
+  margin-bottom: 20px;
 }
 
 .logic-pill-flow {
@@ -87,10 +176,11 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 14px;
-  margin: 28px 0 20px;
+  margin: 28px 0 22px;
 }
 
 .logic-pill {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -98,32 +188,198 @@
   padding: 0 20px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.09);
-  background: rgba(255, 255, 255, 0.03);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.018));
   color: #f3f1ea;
+  overflow: hidden;
+  transition:
+    transform 0.26s ease,
+    border-color 0.26s ease,
+    background 0.26s ease;
+}
+
+.logic-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    rgba(241, 201, 127, 0.08),
+    transparent 45%,
+    rgba(122, 191, 255, 0.08)
+  );
+  opacity: 0.28;
+}
+
+.logic-pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(241, 201, 127, 0.18);
 }
 
 .logic-icon {
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #ffffff 0%, var(--blue) 40%, rgba(122,191,255,0.2) 100%);
-  box-shadow: 0 0 12px rgba(122,191,255,0.26);
+  background: radial-gradient(
+    circle at 35% 35%,
+    #ffffff 0%,
+    var(--blue) 40%,
+    rgba(122, 191, 255, 0.2) 100%
+  );
+  box-shadow: 0 0 12px rgba(122, 191, 255, 0.22);
   animation: subtleIconPulse 4.4s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 .logic-pill:last-child .logic-icon {
-  background: radial-gradient(circle at 35% 35%, #fffaf1 0%, var(--gold) 42%, rgba(241,201,127,0.16) 100%);
-  box-shadow: 0 0 12px rgba(241,201,127,0.2);
+  background: radial-gradient(
+    circle at 35% 35%,
+    #fffaf1 0%,
+    var(--gold) 42%,
+    rgba(241, 201, 127, 0.16) 100%
+  );
+  box-shadow: 0 0 12px rgba(241, 201, 127, 0.18);
 }
 
 .logic-divider {
   width: 34px;
   height: 1px;
-  background: linear-gradient(90deg, rgba(241,201,127,0.14), rgba(122,191,255,0.38));
+  background: linear-gradient(
+    90deg,
+    rgba(241, 201, 127, 0.14),
+    rgba(122, 191, 255, 0.34)
+  );
+  opacity: 0.88;
 }
 
 .center-text {
   text-align: center;
   max-width: 760px;
   margin: 0 auto;
+}
+
+/* ---------- Large tablet ---------- */
+@media (max-width: 1100px) {
+  .principles-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+  .transition-strip {
+    padding-top: 8px;
+    padding-bottom: 24px;
+  }
+
+  .transition-line {
+    padding: 20px 20px;
+    border-radius: 28px;
+  }
+
+  .about {
+    padding-top: 30px;
+  }
+
+  .principles {
+    padding-top: 22px;
+    padding-bottom: 46px;
+  }
+
+  .principles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .connection-logic {
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+
+  .logic-pill-flow {
+    gap: 12px;
+    margin: 24px 0 18px;
+  }
+
+  .logic-divider {
+    width: 26px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .transition-line {
+    padding: 18px 16px;
+    border-radius: 22px;
+  }
+
+  .transition-line p {
+    max-width: 100%;
+  }
+
+  .about {
+    padding-top: 24px;
+  }
+
+  .principles {
+    padding-top: 18px;
+    padding-bottom: 40px;
+  }
+
+  .principles-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .principle-item {
+    padding: 20px 18px 18px;
+    border-radius: 18px;
+  }
+
+  .principle-item h3 {
+    margin-bottom: 10px;
+  }
+
+  .connection-logic {
+    padding-top: 16px;
+    padding-bottom: 24px;
+  }
+
+  .logic-pill-flow {
+    gap: 10px;
+    margin: 22px 0 16px;
+  }
+
+  .logic-pill {
+    width: 100%;
+    justify-content: flex-start;
+    min-height: 48px;
+    padding: 0 16px;
+  }
+
+  .logic-divider {
+    display: none;
+  }
+
+  .center-text {
+    max-width: 100%;
+  }
+}
+
+/* ---------- Small mobile ---------- */
+@media (max-width: 420px) {
+  .transition-line {
+    padding: 16px 14px;
+  }
+
+  .principle-item {
+    padding: 18px 16px 16px;
+  }
+
+  .logic-pill {
+    min-height: 46px;
+    padding: 0 14px;
+  }
 }
