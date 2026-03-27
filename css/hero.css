@@ -317,10 +317,6 @@
   align-items: center;
 }
 
-.hero-copy {
-  max-width: 680px;
-}
-
 .hero-visual {
   position: relative;
   display: flex;
@@ -338,7 +334,12 @@
   pointer-events: none;
 }
 
-/* tablet */
+#hero-sunrise-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
 @media (max-width: 992px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -346,7 +347,6 @@
   }
 
   .hero-visual {
-    order: 2;
     min-height: 380px;
   }
 
@@ -355,7 +355,6 @@
   }
 }
 
-/* mobile */
 @media (max-width: 640px) {
   .hero-visual {
     min-height: 300px;
