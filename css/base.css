@@ -503,4 +503,16 @@ ol {
 .site-footer {
   position: relative;
   z-index: 1;
+}#global-particles-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#global-particles-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
 }
