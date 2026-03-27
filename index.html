@@ -84,9 +84,19 @@
         "description": "Zubolaa is a structured intelligence system built for those who want to grow, earn, build, partner, or scale."
       }
     </script>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.161.0/build/three.module.js"
+        }
+      }
+    </script>
   </head>
 
   <body>
+    <div id="global-particles-canvas" aria-hidden="true"></div>
+
     <div class="site-shell">
       <div class="page-overlay" aria-hidden="true"></div>
       <div id="global-ambient-layer" aria-hidden="true"></div>
@@ -139,47 +149,46 @@
       </header>
 
       <main>
-      <!-- HERO -->
-<section class="hero section" id="home">
-  <div class="section-ambient hero-ambient" aria-hidden="true"></div>
+        <!-- HERO -->
+        <section class="hero section" id="home">
+          <div class="section-ambient hero-ambient" aria-hidden="true"></div>
 
-  <div class="hero-grid">
+          <div class="hero-grid">
+            <!-- LEFT: TEXT -->
+            <div class="hero-copy">
+              <p class="eyebrow">One System for Different Ambitions</p>
+              <p class="hero-ownerline">
+                A structured system by Al Fattah Endless Horizons
+              </p>
 
-    <!-- LEFT: TEXT -->
-    <div class="hero-copy">
-      <p class="eyebrow">One System for Different Ambitions</p>
-      <p class="hero-ownerline">
-        A structured system by Al Fattah Endless Horizons
-      </p>
+              <h1>
+                Stop guessing your path.<br />
+                Enter a system built to guide it.
+              </h1>
 
-      <h1>
-        Stop guessing your path.<br />
-        Enter a system built to guide it.
-      </h1>
+              <p class="hero-lead">
+                Zubolaa is a structured intelligence system built for those who want
+                to grow, earn, build, partner, or scale — with clarity, structure,
+                and direction.
+              </p>
 
-      <p class="hero-lead">
-        Zubolaa is a structured intelligence system built for those who want
-        to grow, earn, build, partner, or scale — with clarity, structure,
-        and direction.
-      </p>
+              <p class="hero-subline">
+                Different ambitions. One connected system.
+              </p>
 
-      <p class="hero-subline">
-        Different ambitions. One connected system.
-      </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#ecosystem">Enter Zubolaa</a>
+                <a class="btn btn-secondary" href="#about">Explore the Structure</a>
+              </div>
+            </div>
 
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#ecosystem">Enter Zubolaa</a>
-        <a class="btn btn-secondary" href="#about">Explore the Structure</a>
-      </div>
-    </div>
+            <!-- RIGHT: THREE.JS SUNRISE -->
+            <div class="hero-visual" aria-hidden="true">
+              <div id="hero-sunrise-canvas"></div>
+            </div>
+          </div>
+        </section>
 
-    <!-- RIGHT: THREE.JS SUNRISE -->
-    <div class="hero-visual" aria-hidden="true">
-      <div id="hero-sunrise-canvas"></div>
-    </div>
-
-  </div>
-</section>
         <!-- TRANSITION -->
         <section
           class="transition-strip section"
@@ -441,53 +450,53 @@
 
         <!-- CONNECTION LOGIC -->
         <section class="connection-logic section section-card" id="logic">
-  <div class="section-ambient logic-ambient" aria-hidden="true"></div>
+          <div class="section-ambient logic-ambient" aria-hidden="true"></div>
 
-  <div class="section-head">
-    <p class="eyebrow">Connection Logic</p>
-    <h2>Every path follows a structure. Zubolaa makes it visible.</h2>
-  </div>
+          <div class="section-head">
+            <p class="eyebrow">Connection Logic</p>
+            <h2>Every path follows a structure. Zubolaa makes it visible.</h2>
+          </div>
 
-  <div class="logic-pill-flow" aria-label="Connection Logic Flow">
-    <span class="logic-pill">
-      <span class="logic-icon" aria-hidden="true"></span>
-      Intent
-    </span>
+          <div class="logic-pill-flow" aria-label="Connection Logic Flow">
+            <span class="logic-pill">
+              <span class="logic-icon" aria-hidden="true"></span>
+              Intent
+            </span>
 
-    <span class="logic-divider"></span>
+            <span class="logic-divider"></span>
 
-    <span class="logic-pill">
-      <span class="logic-icon" aria-hidden="true"></span>
-      Clarity
-    </span>
+            <span class="logic-pill">
+              <span class="logic-icon" aria-hidden="true"></span>
+              Clarity
+            </span>
 
-    <span class="logic-divider"></span>
+            <span class="logic-divider"></span>
 
-    <span class="logic-pill">
-      <span class="logic-icon" aria-hidden="true"></span>
-      Logic
-    </span>
+            <span class="logic-pill">
+              <span class="logic-icon" aria-hidden="true"></span>
+              Logic
+            </span>
 
-    <span class="logic-divider"></span>
+            <span class="logic-divider"></span>
 
-    <span class="logic-pill">
-      <span class="logic-icon" aria-hidden="true"></span>
-      Execution
-    </span>
+            <span class="logic-pill">
+              <span class="logic-icon" aria-hidden="true"></span>
+              Execution
+            </span>
 
-    <span class="logic-divider"></span>
+            <span class="logic-divider"></span>
 
-    <span class="logic-pill">
-      <span class="logic-icon" aria-hidden="true"></span>
-      Zubolaa Intelligence
-    </span>
-  </div>
+            <span class="logic-pill">
+              <span class="logic-icon" aria-hidden="true"></span>
+              Zubolaa Intelligence
+            </span>
+          </div>
 
-  <p class="section-lead center-text">
-    Whether you want to learn, trade, build, partner, or participate —
-    the system connects your intent to a more structured path.
-  </p>
-</section>
+          <p class="section-lead center-text">
+            Whether you want to learn, trade, build, partner, or participate —
+            the system connects your intent to a more structured path.
+          </p>
+        </section>
       </main>
 
       <footer class="site-footer section-card" id="footer-legal">
@@ -526,9 +535,7 @@
       </footer>
     </div>
 
-   <script src="js/main.js"></script>
-<script type="module" src="js/three-background.js"></script>
-      
-    </div>
+    <script src="js/main.js"></script>
+    <script type="module" src="js/three-background.js"></script>
   </body>
 </html>
