@@ -1,0 +1,71 @@
+.site-header {
+  position: fixed;
+  top: 20px;
+  width: 100%;
+  z-index: 100;
+}
+
+.navbar {
+  width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 12px 20px;
+
+  border-radius: 40px;
+  background: rgba(10, 11, 15, 0.6);
+  backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(245, 207, 135, 0.2);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 22px;
+  margin-left: auto;
+}
+
+.nav-menu a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.nav-menu a:hover {
+  color: var(--gold);
+}
+
+/* dropdown */
+
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-trigger {
+  background: none;
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.dropdown-panel {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: var(--bg-elev);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  display: none;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.nav-dropdown.open .dropdown-panel {
+  display: grid;
+}
