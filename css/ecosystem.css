@@ -1,9 +1,11 @@
 .ecosystem-shell {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 28px;
+  align-items: stretch;
 }
 
+/* ---------- LEFT PANELS ---------- */
 .ecosystem-panels {
   display: flex;
   flex-direction: column;
@@ -11,18 +13,229 @@
 }
 
 .ecosystem-panel {
-  padding: 16px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 16px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--line-soft);
+  border: 1px solid rgba(255,255,255,0.07);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.012));
   cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 0.26s ease,
+    border-color 0.26s ease,
+    background 0.26s ease,
+    box-shadow 0.26s ease;
 }
 
+/* subtle internal glow */
+.ecosystem-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    rgba(241,201,127,0.08),
+    transparent 45%,
+    rgba(122,191,255,0.08)
+  );
+  opacity: 0.25;
+}
+
+/* hover */
+.ecosystem-panel:hover {
+  transform: translateY(-3px);
+  border-color: rgba(241,201,127,0.2);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.22);
+}
+
+/* active panel */
 .ecosystem-panel.active {
-  border-color: var(--blue);
+  border-color: rgba(122,191,255,0.6);
+  background:
+    linear-gradient(180deg, rgba(122,191,255,0.06), rgba(255,255,255,0.01));
+  box-shadow:
+    0 14px 32px rgba(0,0,0,0.28),
+    inset 0 0 0 1px rgba(122,191,255,0.12);
 }
 
+/* active glow line */
+.ecosystem-panel.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18%;
+  bottom: 18%;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    var(--gold),
+    var(--blue)
+  );
+  opacity: 0.9;
+}
+
+/* panel content */
+.panel-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.panel-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f5f4ef;
+  letter-spacing: -0.01em;
+}
+
+.panel-line {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+/* ---------- RIGHT DISPLAY ---------- */
 .ecosystem-display {
+  position: relative;
   padding: 30px;
   border-radius: var(--radius-md);
-  background: var(--bg-elev);
+  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    linear-gradient(180deg, rgba(9,12,20,0.72), rgba(8,10,17,0.62));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.34);
+  overflow: hidden;
+}
+
+/* top shine */
+.ecosystem-display::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(241,201,127,0.32),
+    rgba(122,191,255,0.2),
+    transparent
+  );
+  opacity: 0.9;
+}
+
+/* soft internal glow */
+.ecosystem-display::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 70% 20%,
+    rgba(122,191,255,0.06),
+    transparent 40%
+  );
+  opacity: 0.4;
+}
+
+/* ---------- CONTENT ---------- */
+.ecosystem-content {
+  position: relative;
+  z-index: 1;
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.ecosystem-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-tag {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.ecosystem-content h3 {
+  font-size: clamp(22px, 2.2vw, 30px);
+  margin-bottom: 12px;
+  color: #f7f4ed;
+  letter-spacing: -0.02em;
+}
+
+.content-lead {
+  margin-bottom: 16px;
+  max-width: 52ch;
+}
+
+.ecosystem-content ul {
+  margin-top: 10px;
+  padding-left: 1.1rem;
+}
+
+.ecosystem-content li {
+  margin-bottom: 6px;
+}
+
+/* ---------- TABLET ---------- */
+@media (max-width: 900px) {
+  .ecosystem-shell {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ecosystem-display {
+    padding: 24px;
+  }
+
+  .ecosystem-panel {
+    padding: 14px;
+  }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 640px) {
+  .ecosystem-panel {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .panel-title {
+    font-size: 0.95rem;
+  }
+
+  .panel-line {
+    font-size: 0.82rem;
+  }
+
+  .ecosystem-display {
+    padding: 20px;
+  }
+
+  .ecosystem-content h3 {
+    font-size: 22px;
+  }
 }
