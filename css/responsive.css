@@ -1,138 +1,27 @@
-@media (max-width: 1120px) {
-  .principles-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+@media (max-width: 900px) {
+  .two-column-grid {
+    grid-template-columns: 1fr;
   }
 
   .ecosystem-shell {
     grid-template-columns: 1fr;
   }
 
-  .ecosystem-display {
-    min-height: auto;
-  }
-
-  .footer-top,
-  .legal-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 840px) {
-  :root {
-    --container: min(100% - 28px, 1000px);
-  }
-
-  .site-header {
-    top: 10px;
-    padding-top: 10px;
-  }
-
-  .navbar {
-    border-radius: 28px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .nav-toggle {
-    display: inline-flex;
-    margin-left: auto;
-  }
-
-  .nav-menu {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 6px;
-  }
-
-  .nav-menu.open {
-    display: flex;
-  }
-
-  .nav-dropdown,
-  .dropdown-trigger,
-  .dropdown-panel {
-    width: 100%;
-  }
-
-  .dropdown-panel {
-    position: static;
-    margin-top: 12px;
-    min-width: auto;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    display: none;
-  }
-
-  .nav-dropdown.open .dropdown-panel {
-    display: grid;
-  }
-
-  .hero {
-    min-height: auto;
-    padding-top: 120px;
-    padding-bottom: 44px;
-  }
-
-  .about.section-card,
-  .connect.section-card,
-  .site-footer,
-  .ecosystem-shell {
-    padding: 20px;
-  }
-
-  .two-column-grid,
-  .footer-top,
-  .legal-grid {
-    grid-template-columns: 1fr;
-  }
-
   .principles-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .connection-flow {
+  .footer-top {
     grid-template-columns: 1fr;
-    justify-items: center;
-  }
-
-  .connection-flow span {
-    width: 1px;
-    height: 26px;
-    background: linear-gradient(180deg, rgba(245, 207, 135, 0.2), rgba(119, 187, 255, 0.6));
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 500px) {
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+
   .hero h1 {
-    max-width: 11ch;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn {
-    width: 100%;
-  }
-
-  .principles-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ecosystem-display {
-    padding: 20px;
-  }
-
-  .ecosystem-content h3 {
-    max-width: none;
+    font-size: 40px;
   }
 }
