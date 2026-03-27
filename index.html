@@ -2,48 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zubolaa — Clarity in Thought. Precision in Execution.</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Zubolaa — Structured Intelligence for Global Execution</title>
     <meta
       name="description"
-      content="Zubolaa is a structured intelligence system designed to guide clarity, transformation, and real-world execution across Academy, Markets, Participation, Token, and Labs."
+      content="Zubolaa is a structured intelligence system built for clarity, transformation, and execution across learning, markets, participation, value, and intelligent infrastructure."
     />
     <meta
       name="keywords"
-      content="Zubolaa, structured intelligence, academy, markets, market participation, token, labs, execution systems, transformation"
+      content="Zubolaa, structured intelligence, transformation system, Zubolaa Academy, Zubolaa Markets, market participation, token ecosystem, AI systems"
     />
     <meta name="author" content="Zubolaa" />
-    <meta name="theme-color" content="#070b14" />
     <meta name="robots" content="index, follow" />
-    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#08090f" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Zubolaa — Clarity in Thought. Precision in Execution." />
+    <meta property="og:title" content="Zubolaa — Structured Intelligence for Global Execution" />
     <meta
       property="og:description"
-      content="A structured intelligence system built for clarity, transformation, and execution."
+      content="A connected system built for clarity, discipline, transformation, and execution."
     />
-    <meta property="og:image" content="assets/home-bg.png" />
     <meta property="og:url" content="https://zubolaa.com/" />
-    <meta property="og:site_name" content="Zubolaa" />
+    <meta property="og:image" content="https://zubolaa.com/assets/og-cover.jpg" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Zubolaa — Clarity in Thought. Precision in Execution." />
+    <meta name="twitter:title" content="Zubolaa — Structured Intelligence for Global Execution" />
     <meta
       name="twitter:description"
-      content="A structured intelligence system built for clarity, transformation, and execution."
+      content="A connected system built for clarity, discipline, transformation, and execution."
     />
-    <meta name="twitter:image" content="assets/home-bg.png" />
+    <meta name="twitter:image" content="https://zubolaa.com/assets/og-cover.jpg" />
 
+    <link rel="canonical" href="https://zubolaa.com/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap"
       rel="stylesheet"
     />
 
-    <link rel="icon" type="image/png" href="assets/home-bg.png" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
 
@@ -53,29 +53,34 @@
         "@type": "Organization",
         "name": "Zubolaa",
         "url": "https://zubolaa.com/",
-        "logo": "https://zubolaa.com/assets/home-bg.png",
-        "description": "Zubolaa is a structured intelligence system for clarity, transformation, and execution.",
+        "logo": "https://zubolaa.com/assets/logo.png",
         "sameAs": [
-          "https://www.instagram.com/",
-          "https://www.linkedin.com/",
+          "https://instagram.com/",
+          "https://linkedin.com/",
           "https://x.com/",
-          "https://www.youtube.com/"
-        ]
+          "https://youtube.com/"
+        ],
+        "description": "Zubolaa is a structured intelligence system built for clarity, transformation, and execution."
       }
     </script>
   </head>
+
   <body>
     <div class="site-shell">
-      <div class="page-bg" aria-hidden="true"></div>
+      <div id="three-canvas" aria-hidden="true"></div>
       <div class="page-overlay" aria-hidden="true"></div>
-      <canvas id="three-canvas" aria-hidden="true"></canvas>
 
       <header class="site-header">
-        <nav class="navbar" aria-label="Primary">
-          <a class="brand" href="#home" aria-label="Zubolaa Home">Zubolaa</a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#home" class="brand-mark" aria-label="Zubolaa Home">Zubolaa</a>
 
-          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
-            <span></span>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            aria-label="Open navigation"
+          >
             <span></span>
             <span></span>
           </button>
@@ -85,16 +90,20 @@
             <a href="#about">About</a>
 
             <div class="nav-dropdown">
-              <button class="dropdown-trigger" type="button" aria-expanded="false">
+              <button
+                class="dropdown-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="ecosystem-menu"
+              >
                 Ecosystem
-                <span class="dropdown-arrow">+</span>
               </button>
-              <div class="dropdown-panel">
-                <button class="ecosystem-link active" type="button" data-target="academy">Academy</button>
-                <button class="ecosystem-link" type="button" data-target="markets">Markets</button>
-                <button class="ecosystem-link" type="button" data-target="participation">Participation</button>
-                <button class="ecosystem-link" type="button" data-target="token">Token</button>
-                <button class="ecosystem-link" type="button" data-target="labs">Labs</button>
+              <div class="dropdown-menu" id="ecosystem-menu" role="menu">
+                <a href="#ecosystem" data-target="academy" role="menuitem">Academy</a>
+                <a href="#ecosystem" data-target="markets" role="menuitem">Markets</a>
+                <a href="#ecosystem" data-target="participation" role="menuitem">Participation</a>
+                <a href="#ecosystem" data-target="token" role="menuitem">Token</a>
+                <a href="#ecosystem" data-target="labs" role="menuitem">Labs</a>
               </div>
             </div>
 
@@ -108,17 +117,29 @@
           <div class="hero-copy">
             <p class="eyebrow">Structured Intelligence for Global Execution</p>
             <h1>Clarity changes everything.</h1>
+
             <p class="hero-lead">
-              Zubolaa is a transformation system built to refine how people think, decide, and act —
-              with structure, discipline, and direction.
+              Zubolaa is a transformation system built to refine how people think,
+              decide, and act — with structure, discipline, and direction.
             </p>
+
             <p class="hero-subline">
               You are not entering a platform. You are entering a system.
             </p>
+
             <div class="hero-actions">
               <a class="btn btn-primary" href="#ecosystem">Enter Zubolaa</a>
               <a class="btn btn-secondary" href="#about">Why Zubolaa</a>
             </div>
+          </div>
+        </section>
+
+        <section class="transition-strip section" aria-label="Transformation bridge">
+          <div class="transition-line">
+            <p>
+              Transformation does not begin with more noise. It begins when clarity,
+              structure, and execution start working together.
+            </p>
           </div>
         </section>
 
@@ -127,26 +148,51 @@
             <p class="eyebrow">About</p>
             <h2>Built for transformation, not noise.</h2>
           </div>
+
           <div class="two-column-grid">
             <div>
               <p>
-                Zubolaa is designed around one simple belief: transformation becomes real when clarity,
-                structure, and execution begin to work together.
+                Zubolaa is designed around one simple belief: transformation becomes
+                real when clarity, structure, and execution begin to work together.
               </p>
             </div>
             <div>
               <p>
-                This is not a generic learning site or a disconnected product stack. It is a connected
-                system where each branch exists to move thought into action.
+                This is not a generic learning site or a disconnected product stack.
+                It is a connected system where each branch exists to move thought
+                into action.
               </p>
             </div>
           </div>
+        </section>
+
+        <section class="principles section" id="principles">
+          <div class="section-head">
+            <p class="eyebrow">Core Principles</p>
+            <h2>The operating logic behind Zubolaa.</h2>
+          </div>
+
           <div class="principles-grid">
-            <article><h3>Clarity</h3><p>See clearly before moving.</p></article>
-            <article><h3>Structure</h3><p>Turn complexity into usable systems.</p></article>
-            <article><h3>Discipline</h3><p>Stay aligned under pressure.</p></article>
-            <article><h3>Execution</h3><p>Convert understanding into action.</p></article>
-            <article><h3>Direction</h3><p>Move with purpose, not drift.</p></article>
+            <article>
+              <h3>Clarity</h3>
+              <p>See clearly before moving.</p>
+            </article>
+            <article>
+              <h3>Structure</h3>
+              <p>Turn complexity into usable systems.</p>
+            </article>
+            <article>
+              <h3>Discipline</h3>
+              <p>Stay aligned under pressure.</p>
+            </article>
+            <article>
+              <h3>Execution</h3>
+              <p>Convert understanding into action.</p>
+            </article>
+            <article>
+              <h3>Direction</h3>
+              <p>Move with purpose, not drift.</p>
+            </article>
           </div>
         </section>
 
@@ -161,27 +207,61 @@
 
           <div class="ecosystem-shell section-card">
             <div class="ecosystem-panels" role="tablist" aria-label="Zubolaa Ecosystem">
-              <button class="ecosystem-panel active" type="button" data-target="academy" role="tab" aria-selected="true">
+              <button
+                class="ecosystem-panel active"
+                type="button"
+                data-target="academy"
+                role="tab"
+                aria-selected="true"
+              >
                 <span class="panel-index">01</span>
                 <span class="panel-title">Academy</span>
                 <span class="panel-line">Build clarity, discipline, and durable thinking.</span>
               </button>
-              <button class="ecosystem-panel" type="button" data-target="markets" role="tab" aria-selected="false">
+
+              <button
+                class="ecosystem-panel"
+                type="button"
+                data-target="markets"
+                role="tab"
+                aria-selected="false"
+              >
                 <span class="panel-index">02</span>
                 <span class="panel-title">Markets</span>
                 <span class="panel-line">Interpret structure, conditions, and precision.</span>
               </button>
-              <button class="ecosystem-panel" type="button" data-target="participation" role="tab" aria-selected="false">
+
+              <button
+                class="ecosystem-panel"
+                type="button"
+                data-target="participation"
+                role="tab"
+                aria-selected="false"
+              >
                 <span class="panel-index">03</span>
                 <span class="panel-title">Participation</span>
                 <span class="panel-line">Engage through defined systems and controlled access.</span>
               </button>
-              <button class="ecosystem-panel" type="button" data-target="token" role="tab" aria-selected="false">
+
+              <button
+                class="ecosystem-panel"
+                type="button"
+                data-target="token"
+                role="tab"
+                aria-selected="false"
+              >
                 <span class="panel-index">04</span>
                 <span class="panel-title">Token</span>
                 <span class="panel-line">Enable value flow, alignment, and future utility.</span>
               </button>
-              <button class="ecosystem-panel" type="button" data-target="labs" role="tab" aria-selected="false">
+
+              <button
+                class="ecosystem-panel"
+                type="button"
+                data-target="labs"
+                role="tab"
+                aria-selected="false"
+              >
                 <span class="panel-index">05</span>
                 <span class="panel-title">Labs</span>
                 <span class="panel-line">Prototype intelligence tools, systems, and automation.</span>
@@ -193,8 +273,9 @@
                 <p class="content-tag">Zubolaa Academy</p>
                 <h3>Where transformation begins with structure.</h3>
                 <p>
-                  The Academy is the clarity layer. It is built to help users develop thinking models,
-                  discipline, and a repeatable way of learning that can hold under pressure.
+                  The Academy is the clarity layer. It is built to help users
+                  develop thinking models, discipline, and a repeatable way of
+                  learning that can hold under pressure.
                 </p>
                 <ul>
                   <li>Structured tracks and guided progression</li>
@@ -207,8 +288,9 @@
                 <p class="content-tag">Zubolaa Markets</p>
                 <h3>Where interpretation becomes precision.</h3>
                 <p>
-                  Markets is the decision layer. It is designed to help users understand conditions,
-                  interpret market structure, and move with greater clarity instead of reactive noise.
+                  Markets is the decision layer. It is designed to help users
+                  understand conditions, interpret market structure, and move with
+                  greater clarity instead of reactive noise.
                 </p>
                 <ul>
                   <li>Bias, condition, and scenario-driven logic</li>
@@ -221,8 +303,9 @@
                 <p class="content-tag">Market Participation</p>
                 <h3>Where opportunity meets discipline.</h3>
                 <p>
-                  Participation is the access layer. It creates a controlled path for users who want
-                  structured involvement, clear expectations, and rule-based engagement.
+                  Participation is the access layer. It creates a controlled path
+                  for users who want structured involvement, clear expectations,
+                  and rule-based engagement.
                 </p>
                 <ul>
                   <li>Defined participation models</li>
@@ -235,8 +318,9 @@
                 <p class="content-tag">Zubolaa Token</p>
                 <h3>Where future utility can align the ecosystem.</h3>
                 <p>
-                  Token is the value layer. It is intended to connect access, utility, and ecosystem
-                  alignment in a way that supports long-term evolution rather than speculation-first noise.
+                  Token is the value layer. It is intended to connect access,
+                  utility, and ecosystem alignment in a way that supports long-term
+                  evolution rather than speculation-first noise.
                 </p>
                 <ul>
                   <li>Ecosystem-linked utility potential</li>
@@ -249,8 +333,9 @@
                 <p class="content-tag">Zubolaa Labs</p>
                 <h3>Where systems are tested before they scale.</h3>
                 <p>
-                  Labs is the experimentation layer. It exists for research, AI tooling, system design,
-                  and automation concepts that later become practical products inside the ecosystem.
+                  Labs is the experimentation layer. It exists for research,
+                  AI tooling, system design, and automation concepts that later
+                  become practical products inside the ecosystem.
                 </p>
                 <ul>
                   <li>Bot logic, automation, and system research</li>
@@ -262,72 +347,70 @@
           </div>
         </section>
 
-        <section class="connect section section-card" id="connect">
+        <section class="system-logic section section-card" id="connect">
           <div class="section-head">
-            <p class="eyebrow">Connection Logic</p>
-            <h2>Every layer is connected to one system philosophy.</h2>
+            <p class="eyebrow">System Logic</p>
+            <h2>One system. Multiple branches. One direction.</h2>
           </div>
-          <div class="connection-flow">
-            <div>Home</div>
-            <span></span>
-            <div>About</div>
-            <span></span>
-            <div>Ecosystem</div>
-            <span></span>
-            <div>Legal</div>
+
+          <div class="logic-flow">
+            <div class="logic-step">
+              <span>01</span>
+              <h3>Enter</h3>
+              <p>Begin with clarity and understand the system.</p>
+            </div>
+
+            <div class="logic-step">
+              <span>02</span>
+              <h3>Select</h3>
+              <p>Move into the branch aligned with your current need.</p>
+            </div>
+
+            <div class="logic-step">
+              <span>03</span>
+              <h3>Engage</h3>
+              <p>Use structured intelligence instead of fragmented noise.</p>
+            </div>
+
+            <div class="logic-step">
+              <span>04</span>
+              <h3>Evolve</h3>
+              <p>Convert understanding into disciplined action over time.</p>
+            </div>
           </div>
+
           <p class="section-lead center-text">
-            From entry to policy, the experience remains connected, intentional, and globally launch-ready.
+            Every layer inside Zubolaa is designed to stay connected, intentional,
+            and globally scalable.
           </p>
         </section>
       </main>
 
       <footer class="site-footer section-card" id="legal">
         <div class="footer-top">
-          <div>
+          <div class="footer-brand">
             <h2>Zubolaa</h2>
             <p>
-              A structured intelligence system built for clarity, transformation, and execution.
+              A structured intelligence system built for clarity, transformation,
+              and execution.
             </p>
           </div>
+
           <div class="footer-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#ecosystem">Ecosystem</a>
-            <a href="#privacy">Privacy</a>
-            <a href="#terms">Terms</a>
-            <a href="#disclaimer">Disclaimer</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="disclaimer.html">Disclaimer</a>
           </div>
+
           <div class="footer-socials" aria-label="Social media links">
             <a href="#" aria-label="Instagram">Instagram</a>
             <a href="#" aria-label="LinkedIn">LinkedIn</a>
             <a href="#" aria-label="X">X</a>
             <a href="#" aria-label="YouTube">YouTube</a>
           </div>
-        </div>
-
-        <div class="legal-grid">
-          <article id="privacy">
-            <h3>Privacy Policy</h3>
-            <p>
-              Zubolaa is designed to respect user data, collect only what is required for functionality,
-              and evolve with transparent digital practices.
-            </p>
-          </article>
-          <article id="terms">
-            <h3>Terms of Use</h3>
-            <p>
-              Access to Zubolaa services, systems, and interfaces is subject to defined usage terms,
-              responsible engagement, and future product-specific conditions.
-            </p>
-          </article>
-          <article id="disclaimer">
-            <h3>Disclaimer</h3>
-            <p>
-              Content and system guidance are intended for informational, educational, and structured
-              decision-support purposes. They should not be treated as guaranteed outcomes.
-            </p>
-          </article>
         </div>
 
         <div class="footer-bottom">
