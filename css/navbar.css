@@ -1,71 +1,158 @@
 .site-header {
-  position: fixed;
-  top: 20px;
-  width: 100%;
-  z-index: 100;
+  position: sticky;
+  top: 12px;
+  z-index: 50;
+  padding-top: 12px;
 }
 
-.navbar {
+.site-nav {
   width: var(--container);
   margin: 0 auto;
+  min-height: 78px;
   display: flex;
   align-items: center;
-  gap: 28px;
-  padding: 12px 20px;
-
-  border-radius: 40px;
-  background: rgba(10, 11, 15, 0.6);
+  gap: 24px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(9, 11, 18, 0.72), rgba(6, 8, 14, 0.62));
   backdrop-filter: blur(16px);
-
-  border: 1px solid rgba(245, 207, 135, 0.2);
+  border: 1px solid rgba(241, 201, 127, 0.16);
+  box-shadow:
+    0 10px 32px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  position: relative;
+  overflow: hidden;
 }
 
-.brand {
-  font-weight: 700;
-  letter-spacing: 1px;
+.site-nav::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(241, 201, 127, 0.18) 18%,
+    rgba(241, 201, 127, 0.78) 50%,
+    rgba(122, 191, 255, 0.32) 76%,
+    transparent 100%
+  );
+  animation: navShine 7.5s ease-in-out infinite;
+}
+
+@keyframes navShine {
+  0%, 100% { opacity: 0.45; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(18px); }
+}
+
+.brand-mark {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 220px;
+}
+
+.brand-main {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #fbf6ee;
+  letter-spacing: -0.04em;
+}
+
+.brand-sub {
+  font-size: 0.68rem;
+  color: rgba(241, 201, 127, 0.86);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .nav-menu {
-  display: flex;
-  gap: 22px;
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 26px;
 }
 
-.nav-menu a {
-  color: var(--text-main);
-  text-decoration: none;
-  font-size: 14px;
+.nav-menu > a,
+.dropdown-toggle {
+  color: #e9ebf2;
+  font-size: 0.98rem;
+  font-weight: 500;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.24s ease, opacity 0.24s ease;
 }
 
-.nav-menu a:hover {
-  color: var(--gold);
+.nav-menu > a:hover,
+.dropdown-toggle:hover {
+  color: #fff4da;
 }
-
-/* dropdown */
 
 .nav-dropdown {
   position: relative;
 }
 
-.dropdown-trigger {
-  background: none;
-  border: none;
-  color: var(--text-main);
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 0;
+  min-width: 220px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  background:
+    linear-gradient(180deg, rgba(9, 12, 20, 0.94), rgba(6, 9, 14, 0.9));
+  border: 1px solid rgba(241, 201, 127, 0.15);
+  border-radius: 22px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.36);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.26s ease, transform 0.26s ease, visibility 0.26s ease;
+}
+
+.nav-dropdown.open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  padding: 10px 12px;
+  border-radius: 14px;
+  color: var(--text-dim);
+  transition: background 0.24s ease, color 0.24s ease, transform 0.24s ease;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff6e2;
+  transform: translateX(2px);
+}
+
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(241, 201, 127, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
   cursor: pointer;
 }
 
-.dropdown-panel {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  background: var(--bg-elev);
-  padding: 16px;
-  border-radius: var(--radius-md);
-  display: none;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-
-.nav-dropdown.open .dropdown-panel {
-  display: grid;
+.nav-toggle span {
+  width: 20px;
+  height: 1.8px;
+  background: #f2eee7;
+  border-radius: 20px;
 }
