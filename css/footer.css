@@ -1,0 +1,23 @@
+.site-footer {
+  margin-top: 80px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 30px;
+}
+
+.footer-links a,
+.footer-socials a {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-dim);
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 20px;
+  font-size: 12px;
+}
