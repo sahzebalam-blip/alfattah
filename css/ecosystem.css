@@ -1,0 +1,28 @@
+.ecosystem-shell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.ecosystem-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ecosystem-panel {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line-soft);
+  cursor: pointer;
+}
+
+.ecosystem-panel.active {
+  border-color: var(--blue);
+}
+
+.ecosystem-display {
+  padding: 30px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elev);
+}
