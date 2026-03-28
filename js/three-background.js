@@ -1,313 +1,57 @@
 import * as THREE from "three";
 
-const particleContainer = document.getElementById("global-particles-canvas");
+const particleMount = document.getElementById("global-particles-canvas");
 const ambientLayer = document.getElementById("global-ambient-layer");
-const heroSunriseContainer = document.getElementById("hero-sunrise-canvas");
 
-let renderer;
-let scene;
-let camera;
-let particleSystem;
-let rayGroup;
-let clock;
-let animationId;
+if (particleMount) {
+  const scene = new THREE.Scene();
 
-function initGlobalScene() {
-  if (!particleContainer) return;
-
-  scene = new THREE.Scene();
-  clock = new THREE.Clock();
-
-  camera = new THREE.PerspectiveCamera(
-    50,
+  const camera = new THREE.PerspectiveCamera(
+    55,
     window.innerWidth / window.innerHeight,
     0.1,
-    200
+    100
   );
-  camera.position.z = 26;
+  camera.position.z = 16;
 
-  renderer = new THREE.WebGLRenderer({
-    antialias: true,
+  const renderer = new THREE.WebGLRenderer({
     alpha: true,
-    powerPreference: "high-performance",
+    antialias: true,
   });
 
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0x000000, 0);
-  renderer.domElement.style.position = "fixed";
-  renderer.domElement.style.inset = "0";
-  renderer.domElement.style.width = "100%";
-  renderer.domElement.style.height = "100%";
-  renderer.domElement.style.pointerEvents = "none";
-  renderer.domElement.style.zIndex = "0";
+  particleMount.appendChild(renderer.domElement);
 
-  particleContainer.innerHTML = "";
-  particleContainer.appendChild(renderer.domElement);
-
-  createParticles();
-  createRays();
-  createSoftGlowDOM();
-}
-
-function createParticles() {
-  const count = 1400;
-  const positions = new Float32Array(count * 3);
-  const scales = new Float32Array(count);
-
-  for (let i = 0; i < count; i += 1) {
-    const i3 = i * 3;
-
-    positions[i3] = (Math.random() - 0.5) * 120;
-    positions[i3 + 1] = (Math.random() - 0.5) * 90;
-    positions[i3 + 2] = (Math.random() - 0.5) * 50;
-
-    scales[i] = Math.random();
-  }
-
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-  geometry.setAttribute("aScale", new THREE.BufferAttribute(scales, 1));
-
-  const material = new THREE.ShaderMaterial({
-    transparent: true,
-    depthWrite: false,
-    blending: THREE.AdditiveBlending,
-    uniforms: {
-      uTime: { value: 0 },
-    },
-    vertexShader: `
-      attribute float aScale;
-      uniform float uTime;
-      varying float vAlpha;
-
-      void main() {
-        vec3 pos = position;
-        pos.y += sin(uTime * 0.08 + position.x * 0.05) * 0.22;
-        pos.x += cos(uTime * 0.05 + position.y * 0.04) * 0.12;
-
-        vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-        gl_Position = projectionMatrix * mvPosition;
-        gl_PointSize = (1.1 + aScale * 2.2) * (30.0 / -mvPosition.z);
-        vAlpha = 0.22 + aScale * 0.48;
-      }
-    `,
-    fragmentShader: `
-      varying float vAlpha;
-
-      void main() {
-        vec2 uv = gl_PointCoord - vec2(0.5);
-        float d = length(uv);
-        float strength = smoothstep(0.48, 0.0, d);
-
-        vec3 gold = vec3(0.86, 0.70, 0.36);
-        vec3 blue = vec3(0.36, 0.58, 0.96);
-        vec3 color = mix(blue, gold, strength * 0.7);
-
-        gl_FragColor = vec4(color, strength * vAlpha);
-      }
-    `,
-  });
-
-  particleSystem = new THREE.Points(geometry, material);
-  scene.add(particleSystem);
-}
-
-function createRays() {
-  rayGroup = new THREE.Group();
-
-  const rayGeometry = new THREE.PlaneGeometry(3.2, 36, 1, 1);
-
-  for (let i = 0; i < 10; i += 1) {
-    const material = new THREE.MeshBasicMaterial({
-      color: i % 2 === 0 ? 0xd7ad59 : 0x4d7ee6,
-      transparent: true,
-      opacity: i % 2 === 0 ? 0.028 : 0.02,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending,
-      side: THREE.DoubleSide,
-    });
-
-    const ray = new THREE.Mesh(rayGeometry, material);
-    ray.position.x = -42 + i * 9;
-    ray.position.y = -6 + Math.random() * 14;
-    ray.position.z = -14 - Math.random() * 8;
-    ray.rotation.z = THREE.MathUtils.degToRad(-10 + Math.random() * 20);
-    ray.scale.y = 0.7 + Math.random() * 0.8;
-
-    rayGroup.add(ray);
-  }
-
-  scene.add(rayGroup);
-}
-
-function createSoftGlowDOM() {
-  if (!ambientLayer) return;
-
-  ambientLayer.innerHTML = "";
-
-  const glow = document.createElement("div");
-  glow.className = "global-soft-glow";
-
-  const haze = document.createElement("div");
-  haze.className = "global-soft-haze";
-
-  ambientLayer.append(glow, haze);
-
-  Object.assign(ambientLayer.style, {
+  Object.assign(particleMount.style, {
     position: "fixed",
     inset: "0",
-    pointerEvents: "none",
     zIndex: "0",
+    pointerEvents: "none",
     overflow: "hidden",
   });
 
-  Object.assign(glow.style, {
-    position: "absolute",
-    inset: "0",
-    background:
-      "radial-gradient(circle at 22% 18%, rgba(214,170,76,0.06), transparent 26%), radial-gradient(circle at 78% 22%, rgba(77,126,230,0.06), transparent 24%), radial-gradient(circle at 50% 72%, rgba(214,170,76,0.04), transparent 30%)",
-    filter: "blur(14px)",
+  Object.assign(renderer.domElement.style, {
+    width: "100%",
+    height: "100%",
+    display: "block",
+    opacity: window.innerWidth <= 768 ? "0.55" : "0.85",
   });
 
-  Object.assign(haze.style, {
-    position: "absolute",
-    inset: "0",
-    background:
-      "linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0))",
-    opacity: "0.5",
-  });
-}
-
-function animateGlobalScene() {
-  if (!renderer || !scene || !camera) return;
-
-  const elapsed = clock.getElapsedTime();
-
-  if (particleSystem?.material?.uniforms?.uTime) {
-    particleSystem.material.uniforms.uTime.value = elapsed;
-  }
-
-  if (particleSystem) {
-    particleSystem.rotation.y = elapsed * 0.012;
-    particleSystem.rotation.x = Math.sin(elapsed * 0.08) * 0.015;
-  }
-
-  if (rayGroup) {
-    rayGroup.children.forEach((ray, index) => {
-      ray.position.y += Math.sin(elapsed * 0.35 + index) * 0.0028;
-      ray.material.opacity =
-        (index % 2 === 0 ? 0.026 : 0.018) +
-        Math.sin(elapsed * 0.45 + index) * 0.003;
-    });
-  }
-
-  renderer.render(scene, camera);
-  animationId = requestAnimationFrame(animateGlobalScene);
-}
-
-function onResize() {
-  if (!renderer || !camera) return;
-
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
-  renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
-function initHeroSunrise() {
-  if (!heroSunriseContainer) return;
-
-  const scene = new THREE.Scene();
-  const width = heroSunriseContainer.clientWidth || 520;
-  const height = heroSunriseContainer.clientHeight || 520;
-
-  const camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 100);
-  camera.position.z = 8;
-
-  const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    alpha: true,
-  });
-
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
-  renderer.setSize(width, height);
-  renderer.setClearColor(0x000000, 0);
-
-  heroSunriseContainer.innerHTML = "";
-  heroSunriseContainer.appendChild(renderer.domElement);
-
-  const group = new THREE.Group();
-
-  const glowGeometry = new THREE.SphereGeometry(1.3, 48, 48);
-  const glowMaterial = new THREE.ShaderMaterial({
-    transparent: true,
-    blending: THREE.AdditiveBlending,
-    depthWrite: false,
-    uniforms: {
-      uTime: { value: 0 },
-    },
-    vertexShader: `
-      varying vec3 vNormal;
-      void main() {
-        vNormal = normalize(normalMatrix * normal);
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-      }
-    `,
-    fragmentShader: `
-      varying vec3 vNormal;
-      void main() {
-        float intensity = pow(0.7 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.2);
-        vec3 gold = vec3(0.92, 0.76, 0.42);
-        vec3 blue = vec3(0.31, 0.52, 0.94);
-        vec3 color = mix(blue, gold, 0.62);
-        gl_FragColor = vec4(color, intensity * 0.52);
-      }
-    `,
-  });
-
-  const glowSphere = new THREE.Mesh(glowGeometry, glowMaterial);
-  group.add(glowSphere);
-
-  const horizonGeometry = new THREE.RingGeometry(1.8, 2.05, 128);
-  const horizonMaterial = new THREE.MeshBasicMaterial({
-    color: 0xd7ad59,
-    transparent: true,
-    opacity: 0.16,
-    side: THREE.DoubleSide,
-    blending: THREE.AdditiveBlending,
-  });
-
-  const horizonRing = new THREE.Mesh(horizonGeometry, horizonMaterial);
-  horizonRing.rotation.x = Math.PI / 2.8;
-  group.add(horizonRing);
-
-  const outerGeometry = new THREE.RingGeometry(2.4, 2.46, 128);
-  const outerMaterial = new THREE.MeshBasicMaterial({
-    color: 0x4d7ee6,
-    transparent: true,
-    opacity: 0.08,
-    side: THREE.DoubleSide,
-    blending: THREE.AdditiveBlending,
-  });
-
-  const outerRing = new THREE.Mesh(outerGeometry, outerMaterial);
-  outerRing.rotation.x = Math.PI / 2.45;
-  outerRing.rotation.z = 0.24;
-  group.add(outerRing);
-
-  const particleCount = 180;
+  // =========================
+  // PARTICLES
+  // =========================
+  const particleCount = window.innerWidth <= 768 ? 120 : 220;
   const positions = new Float32Array(particleCount * 3);
+  const scales = new Float32Array(particleCount);
 
-  for (let i = 0; i < particleCount; i += 1) {
+  for (let i = 0; i < particleCount; i++) {
     const i3 = i * 3;
-    const radius = 2.2 + Math.random() * 1.4;
-    const angle = Math.random() * Math.PI * 2;
-
-    positions[i3] = Math.cos(angle) * radius;
-    positions[i3 + 1] = (Math.random() - 0.5) * 2.8;
-    positions[i3 + 2] = Math.sin(angle) * radius * 0.55;
+    positions[i3] = (Math.random() - 0.5) * 38;
+    positions[i3 + 1] = (Math.random() - 0.5) * 24;
+    positions[i3 + 2] = (Math.random() - 0.5) * 16;
+    scales[i] = Math.random();
   }
 
   const particlesGeometry = new THREE.BufferGeometry();
@@ -315,59 +59,175 @@ function initHeroSunrise() {
     "position",
     new THREE.BufferAttribute(positions, 3)
   );
+  particlesGeometry.setAttribute(
+    "aScale",
+    new THREE.BufferAttribute(scales, 1)
+  );
 
   const particlesMaterial = new THREE.PointsMaterial({
-    color: 0xe6c47f,
-    size: 0.038,
+    size: window.innerWidth <= 768 ? 0.05 : 0.065,
+    color: new THREE.Color("#d7b46a"),
     transparent: true,
-    opacity: 0.65,
+    opacity: 0.55,
     blending: THREE.AdditiveBlending,
     depthWrite: false,
+    sizeAttenuation: true,
   });
 
   const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-  group.add(particles);
+  scene.add(particles);
 
-  scene.add(group);
+  // =========================
+  // GOLD HAZE
+  // =========================
+  const hazeGeometry = new THREE.PlaneGeometry(18, 18, 1, 1);
 
-  const localClock = new THREE.Clock();
+  const createGlowPlane = (color, opacity, x, y, scaleX, scaleY) => {
+    const material = new THREE.MeshBasicMaterial({
+      color: new THREE.Color(color),
+      transparent: true,
+      opacity,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
 
-  function renderSunrise() {
-    const t = localClock.getElapsedTime();
+    const plane = new THREE.Mesh(hazeGeometry, material);
+    plane.position.set(x, y, -4);
+    plane.scale.set(scaleX, scaleY, 1);
+    scene.add(plane);
+    return plane;
+  };
 
-    glowSphere.scale.setScalar(1 + Math.sin(t * 0.9) * 0.04);
-    horizonRing.rotation.z += 0.0017;
-    outerRing.rotation.z -= 0.0011;
-    particles.rotation.y += 0.0016;
-    group.rotation.y = Math.sin(t * 0.18) * 0.12;
+  const goldGlowLeft = createGlowPlane("#c99a3c", 0.07, -6.4, 2.4, 0.9, 1.6);
+  const blueGlowRight = createGlowPlane("#315fb2", 0.05, 6.6, 0.3, 1.2, 1.8);
+  const horizonGlow = createGlowPlane("#e0aa55", 0.08, 0, -6.3, 1.9, 0.65);
 
-    renderer.render(scene, camera);
-    requestAnimationFrame(renderSunrise);
-  }
+  // =========================
+  // FLOATING SIGNAL LINES
+  // =========================
+  const lineGroup = new THREE.Group();
+  scene.add(lineGroup);
 
-  renderSunrise();
+  const makeLine = (width, y, opacity, color, xOffset = 0) => {
+    const geo = new THREE.PlaneGeometry(width, 0.018, 1, 1);
+    const mat = new THREE.MeshBasicMaterial({
+      color: new THREE.Color(color),
+      transparent: true,
+      opacity,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(xOffset, y, -2.5);
+    lineGroup.add(mesh);
+    return mesh;
+  };
 
-  const resizeObserver = new ResizeObserver(() => {
-    const newWidth = heroSunriseContainer.clientWidth || 520;
-    const newHeight = heroSunriseContainer.clientHeight || 520;
+  const lines = [
+    makeLine(11.5, 3.2, 0.06, "#d8b469", -1.4),
+    makeLine(8.8, -1.4, 0.045, "#6ea4ff", 1.8),
+    makeLine(9.4, -4.8, 0.05, "#d8b469", 0.2),
+  ];
 
-    camera.aspect = newWidth / newHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(newWidth, newHeight);
+  // =========================
+  // MOUSE INTERACTION
+  // =========================
+  const mouse = {
+    x: 0,
+    y: 0,
+    tx: 0,
+    ty: 0,
+  };
+
+  window.addEventListener("mousemove", (e) => {
+    mouse.tx = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.ty = -(e.clientY / window.innerHeight) * 2 + 1;
   });
 
-  resizeObserver.observe(heroSunriseContainer);
+  // =========================
+  // AMBIENT LAYER CSS LIGHT
+  // =========================
+  if (ambientLayer) {
+    Object.assign(ambientLayer.style, {
+      position: "fixed",
+      inset: "0",
+      pointerEvents: "none",
+      zIndex: "0",
+      background: `
+        radial-gradient(circle at 18% 20%, rgba(255, 215, 120, 0.08), transparent 24%),
+        radial-gradient(circle at 78% 28%, rgba(94, 167, 255, 0.06), transparent 26%),
+        radial-gradient(circle at 50% 105%, rgba(255, 190, 90, 0.08), transparent 28%)
+      `,
+      mixBlendMode: "screen",
+      opacity: window.innerWidth <= 768 ? "0.7" : "1",
+    });
+  }
+
+  // =========================
+  // RESIZE
+  // =========================
+  const handleResize = () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+    renderer.domElement.style.opacity = window.innerWidth <= 768 ? "0.55" : "0.85";
+
+    if (ambientLayer) {
+      ambientLayer.style.opacity = window.innerWidth <= 768 ? "0.7" : "1";
+    }
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  // =========================
+  // ANIMATION LOOP
+  // =========================
+  const clock = new THREE.Clock();
+
+  const animate = () => {
+    const elapsed = clock.getElapsedTime();
+
+    mouse.x += (mouse.tx - mouse.x) * 0.03;
+    mouse.y += (mouse.ty - mouse.y) * 0.03;
+
+    particles.rotation.z = elapsed * 0.012;
+    particles.rotation.x = mouse.y * 0.03;
+    particles.rotation.y = mouse.x * 0.05;
+
+    const pos = particlesGeometry.attributes.position.array;
+
+    for (let i = 0; i < particleCount; i++) {
+      const i3 = i * 3;
+      pos[i3 + 1] += Math.sin(elapsed * 0.35 + i * 0.17) * 0.0018;
+      pos[i3] += Math.cos(elapsed * 0.22 + i * 0.11) * 0.0009;
+    }
+
+    particlesGeometry.attributes.position.needsUpdate = true;
+
+    goldGlowLeft.position.y = 2.4 + Math.sin(elapsed * 0.35) * 0.16;
+    goldGlowLeft.position.x = -6.4 + mouse.x * 0.35;
+
+    blueGlowRight.position.y = 0.3 + Math.cos(elapsed * 0.28) * 0.22;
+    blueGlowRight.position.x = 6.6 + mouse.x * 0.28;
+
+    horizonGlow.position.y = -6.3 + Math.sin(elapsed * 0.2) * 0.1;
+    horizonGlow.material.opacity = 0.075 + Math.sin(elapsed * 0.55) * 0.01;
+
+    lines[0].position.x = -1.4 + Math.sin(elapsed * 0.4) * 0.25;
+    lines[1].position.x = 1.8 + Math.cos(elapsed * 0.3) * 0.28;
+    lines[2].position.x = 0.2 + Math.sin(elapsed * 0.22) * 0.18;
+
+    lineGroup.rotation.z = mouse.x * 0.025;
+    lineGroup.position.y = mouse.y * 0.16;
+
+    camera.position.x = mouse.x * 0.3;
+    camera.position.y = mouse.y * 0.18;
+    camera.lookAt(scene.position);
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  };
+
+  animate();
 }
-
-function init() {
-  initGlobalScene();
-  initHeroSunrise();
-  animateGlobalScene();
-  window.addEventListener("resize", onResize);
-}
-
-init();
-
-window.addEventListener("beforeunload", () => {
-  if (animationId) cancelAnimationFrame(animationId);
-});
