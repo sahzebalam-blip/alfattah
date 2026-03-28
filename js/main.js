@@ -1,132 +1,179 @@
-async function loadInclude(selector, filePath) {
-  const mountPoint = document.querySelector(selector);
-  if (!mountPoint) return;
+/* =========================
+   GLOBAL MOBILE FIXES
+========================= */
 
-  try {
-    const response = await fetch(filePath);
-    if (!response.ok) {
-      throw new Error(`Failed to load ${filePath}: ${response.status}`);
-    }
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
 
-    const html = await response.text();
-    mountPoint.innerHTML = html;
-  } catch (error) {
-    console.error(error);
+  .site-shell {
+    overflow: hidden;
   }
 }
 
-function setActiveNav() {
-  const currentPage = document.body.dataset.page;
-  if (!currentPage) return;
+/* =========================
+   NAVBAR EXTRA FIXES
+========================= */
 
-  const navLinks = document.querySelectorAll(".nav-link[data-page]");
-  const dropdownToggle = document.querySelector(".dropdown-toggle[data-page='ecosystem']");
-
-  navLinks.forEach((link) => link.classList.remove("is-active"));
-  if (dropdownToggle) dropdownToggle.classList.remove("is-active");
-
-  const activeLink = document.querySelector(`.nav-link[data-page="${currentPage}"]`);
-
-  if (activeLink) {
-    activeLink.classList.add("is-active");
-    return;
+@media (max-width: 768px) {
+  .site-header {
+    backdrop-filter: blur(10px);
   }
 
-  const ecosystemPages = ["academy", "markets", "participation", "token", "labs"];
-  if (ecosystemPages.includes(currentPage) && dropdownToggle) {
-    dropdownToggle.classList.add("is-active");
+  .site-nav {
+    padding: 12px 18px;
+  }
+
+  .brand-main {
+    font-size: 1.4rem;
+  }
+
+  .brand-sub {
+    font-size: 0.6rem;
+  }
+
+  .nav-menu {
+    border-top: 1px solid rgba(255, 215, 120, 0.08);
   }
 }
 
-function initNavbarInteractions() {
-  const body = document.body;
-  const navToggle = document.querySelector(".nav-toggle");
-  const navMenu = document.querySelector(".nav-menu");
-  const navDropdown = document.querySelector(".nav-dropdown");
-  const dropdownToggle = document.querySelector(".dropdown-toggle");
-  const dropdownMenu = document.querySelector(".dropdown-menu");
+/* =========================
+   HERO FINAL MOBILE POLISH
+========================= */
 
-  if (!navToggle || !navMenu) return;
-
-  const closeMobileMenu = () => {
-    navMenu.classList.remove("open");
-    navToggle.setAttribute("aria-expanded", "false");
-    body.classList.remove("nav-open");
-  };
-
-  const toggleMobileMenu = () => {
-    const isOpen = navMenu.classList.toggle("open");
-    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    body.classList.toggle("nav-open", isOpen);
-  };
-
-  const closeDropdown = () => {
-    if (!navDropdown || !dropdownToggle) return;
-    navDropdown.classList.remove("open");
-    if (dropdownMenu) dropdownMenu.classList.remove("open");
-    dropdownToggle.setAttribute("aria-expanded", "false");
-  };
-
-  const toggleDropdown = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (!navDropdown || !dropdownToggle) return;
-
-    const isOpen = navDropdown.classList.toggle("open");
-    if (dropdownMenu) dropdownMenu.classList.toggle("open", isOpen);
-    dropdownToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-  };
-
-  navToggle.addEventListener("click", (event) => {
-    event.stopPropagation();
-    toggleMobileMenu();
-  });
-
-  if (dropdownToggle) {
-    dropdownToggle.addEventListener("click", toggleDropdown);
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 7.8rem;
   }
 
-  document.addEventListener("click", (event) => {
-    const clickedInsideNav =
-      navMenu.contains(event.target) || navToggle.contains(event.target);
+  .hero-grid {
+    gap: 1.8rem;
+  }
 
-    if (!clickedInsideNav && window.innerWidth <= 960) {
-      closeMobileMenu();
-    }
+  .hero-lead {
+    max-width: 100%;
+  }
 
-    if (navDropdown && !navDropdown.contains(event.target)) {
-      closeDropdown();
-    }
-  });
-
-  document.querySelectorAll(".nav-menu a").forEach((link) => {
-    link.addEventListener("click", () => {
-      closeDropdown();
-      closeMobileMenu();
-    });
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeDropdown();
-      closeMobileMenu();
-    }
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 960) {
-      closeMobileMenu();
-    }
-  });
+  .hero-visual {
+    margin-top: 0.5rem;
+  }
 }
 
-async function initIncludes() {
-  await loadInclude("#navbar-include", "components/navbar.html");
-  await loadInclude("#footer-include", "components/footer.html");
+/* =========================
+   SECTION SPACING CONTROL
+========================= */
 
-  setActiveNav();
-  initNavbarInteractions();
+@media (max-width: 768px) {
+  .section {
+    padding: 4.2rem 0;
+  }
+
+  .section-head {
+    margin-bottom: 1.6rem;
+  }
+
+  .section-lead {
+    margin-top: 0.7rem;
+  }
 }
 
-document.addEventListener("DOMContentLoaded", initIncludes);
+/* =========================
+   PANELS MOBILE BEHAVIOR
+========================= */
+
+@media (max-width: 768px) {
+  .ecosystem-panel {
+    transform: none !important;
+  }
+
+  .ecosystem-panel:hover {
+    transform: none;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 10px 20px rgba(0, 0, 0, 0.18);
+  }
+
+  .panel-icon {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 6px 14px rgba(0, 0, 0, 0.16);
+  }
+}
+
+/* =========================
+   BUTTON STACKING
+========================= */
+
+@media (max-width: 768px) {
+  .hero-actions {
+    gap: 0.8rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.85rem 1.2rem;
+  }
+}
+
+/* =========================
+   TRANSITION STRIP MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .transition-line {
+    border-radius: 20px;
+  }
+
+  .transition-line p {
+    line-height: 1.2;
+  }
+}
+
+/* =========================
+   SMALL MOBILE (<=520px)
+========================= */
+
+@media (max-width: 520px) {
+  .site-nav {
+    padding: 10px 14px;
+  }
+
+  .hero {
+    padding-top: 7.2rem;
+  }
+
+  .section {
+    padding: 3.6rem 0;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+  }
+
+  .transition-line {
+    padding: 1.7rem 0.7rem 1.6rem;
+  }
+
+  .panel-title {
+    font-size: 0.95rem;
+  }
+
+  .panel-line {
+    font-size: 0.88rem;
+  }
+}
+
+/* =========================
+   PERFORMANCE GUARD
+========================= */
+
+@media (max-width: 768px) {
+  #global-particles-canvas {
+    opacity: 0.6;
+  }
+
+  #global-ambient-layer {
+    opacity: 0.7;
+  }
+}
