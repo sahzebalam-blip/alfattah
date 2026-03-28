@@ -458,3 +458,150 @@
     max-width: 260px;
   }
 }
+/* ===== GLOBAL SECTION FIX ===== */
+
+.section {
+  position: relative;
+  padding: 6rem 0;
+}
+
+.section-card {
+  border-radius: 1.8rem;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
+    rgba(10,12,18,0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ===== SECTION HEAD ===== */
+
+.section-head {
+  width: min(900px, calc(100% - 2rem));
+  margin: 0 auto 2.5rem;
+}
+
+.section-head h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin: 0.5rem 0 1rem;
+}
+
+.section-lead {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(230,230,230,0.75);
+}
+
+/* ===== TEXT ===== */
+
+.section-copy-strong {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #f2ede4;
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(210,170,90,0.85);
+}
+
+/* ===== GRID SYSTEM FIX ===== */
+
+.two-column-grid {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* FOUNDATION */
+.foundation-grid {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+/* FLOW */
+.flow-grid {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+/* ECOSYSTEM */
+.ecosystem-mini-grid {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 2rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* ===== CARD FIX ===== */
+
+.foundation-card,
+.flow-card,
+.mini-system-card {
+  padding: 1.4rem;
+  border-radius: 1.4rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(12,14,20,0.6);
+}
+
+/* ===== EXPERIENCE PILLS ===== */
+
+.experience-points {
+  width: min(900px, calc(100% - 2rem));
+  margin: 2rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.experience-points span {
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(10,12,18,0.6);
+}
+
+/* ===== MOBILE FIX ===== */
+
+@media (max-width: 1024px) {
+  .foundation-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .flow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ecosystem-mini-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .two-column-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .foundation-grid,
+  .flow-grid,
+  .ecosystem-mini-grid {
+    grid-template-columns: 1fr;
+  }
+}
