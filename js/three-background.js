@@ -19,7 +19,7 @@ if (particleMount) {
     antialias: true,
   });
 
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0x000000, 0);
   particleMount.appendChild(renderer.domElement);
@@ -36,13 +36,13 @@ if (particleMount) {
     width: "100%",
     height: "100%",
     display: "block",
-    opacity: window.innerWidth <= 768 ? "0.42" : "0.62",
+    opacity: window.innerWidth <= 768 ? "0.52" : "0.74",
   });
 
   // =========================
   // PARTICLES
   // =========================
-  const particleCount = window.innerWidth <= 768 ? 90 : 170;
+  const particleCount = window.innerWidth <= 768 ? 110 : 200;
   const positions = new Float32Array(particleCount * 3);
 
   for (let i = 0; i < particleCount; i++) {
@@ -59,10 +59,10 @@ if (particleMount) {
   );
 
   const particlesMaterial = new THREE.PointsMaterial({
-    size: window.innerWidth <= 768 ? 0.042 : 0.055,
+    size: window.innerWidth <= 768 ? 0.05 : 0.065,
     color: new THREE.Color("#d7b46a"),
     transparent: true,
-    opacity: 0.34,
+    opacity: 0.5,
     blending: THREE.AdditiveBlending,
     depthWrite: false,
     sizeAttenuation: true,
@@ -72,7 +72,7 @@ if (particleMount) {
   scene.add(particles);
 
   // =========================
-  // SOFT GLOW PLANES
+  // GLOW PLANES
   // =========================
   const glowGeometry = new THREE.PlaneGeometry(18, 18, 1, 1);
 
@@ -92,21 +92,21 @@ if (particleMount) {
     return plane;
   };
 
-  // toned down side atmospheres
-  const leftGoldGlow = createGlowPlane("#c99634", 0.028, -6.3, 1.6, 0.95, 1.55);
-  const rightBlueGlow = createGlowPlane("#294f9a", 0.022, 6.8, 0.8, 1.15, 1.75);
+  // toned-down big washes
+  const leftGoldGlow = createGlowPlane("#c99634", 0.035, -6.1, 1.7, 1.0, 1.55);
+  const rightBlueGlow = createGlowPlane("#294f9a", 0.026, 6.8, 0.9, 1.15, 1.8);
 
-  // soft sunrise-horizon feel in background
-  const horizonGlow = createGlowPlane("#d79a43", 0.055, 0, -6.7, 2.2, 0.58);
+  // subtle sunrise horizon
+  const horizonGlow = createGlowPlane("#d79a43", 0.06, 0, -6.7, 2.25, 0.6);
 
   // =========================
-  // THIN SIGNAL LINES
+  // SIGNAL LINES
   // =========================
   const lineGroup = new THREE.Group();
   scene.add(lineGroup);
 
   const makeLine = (width, y, opacity, color, xOffset = 0) => {
-    const geo = new THREE.PlaneGeometry(width, 0.012, 1, 1);
+    const geo = new THREE.PlaneGeometry(width, 0.014, 1, 1);
     const mat = new THREE.MeshBasicMaterial({
       color: new THREE.Color(color),
       transparent: true,
@@ -121,9 +121,9 @@ if (particleMount) {
   };
 
   const lines = [
-    makeLine(10.5, 3.3, 0.022, "#cfa75a", -1.2),
-    makeLine(8.4, -1.6, 0.018, "#5b8fe7", 1.7),
-    makeLine(9.1, -4.9, 0.02, "#cfa75a", 0.1),
+    makeLine(10.5, 3.3, 0.028, "#cfa75a", -1.2),
+    makeLine(8.4, -1.6, 0.022, "#5b8fe7", 1.7),
+    makeLine(9.1, -4.9, 0.025, "#cfa75a", 0.1),
   ];
 
   // =========================
@@ -151,12 +151,12 @@ if (particleMount) {
       pointerEvents: "none",
       zIndex: "0",
       background: `
-        radial-gradient(circle at 18% 24%, rgba(255, 210, 110, 0.045), transparent 24%),
-        radial-gradient(circle at 78% 26%, rgba(94, 167, 255, 0.035), transparent 26%),
-        radial-gradient(circle at 50% 108%, rgba(215, 150, 70, 0.08), transparent 22%)
+        radial-gradient(circle at 18% 24%, rgba(255, 210, 110, 0.05), transparent 24%),
+        radial-gradient(circle at 78% 26%, rgba(94, 167, 255, 0.04), transparent 26%),
+        radial-gradient(circle at 50% 108%, rgba(215, 150, 70, 0.085), transparent 22%)
       `,
       mixBlendMode: "screen",
-      opacity: window.innerWidth <= 768 ? "0.55" : "0.8",
+      opacity: window.innerWidth <= 768 ? "0.58" : "0.84",
     });
   }
 
@@ -167,11 +167,11 @@ if (particleMount) {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
-    renderer.domElement.style.opacity = window.innerWidth <= 768 ? "0.42" : "0.62";
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+    renderer.domElement.style.opacity = window.innerWidth <= 768 ? "0.52" : "0.74";
 
     if (ambientLayer) {
-      ambientLayer.style.opacity = window.innerWidth <= 768 ? "0.55" : "0.8";
+      ambientLayer.style.opacity = window.innerWidth <= 768 ? "0.58" : "0.84";
     }
   };
 
@@ -185,41 +185,41 @@ if (particleMount) {
   const animate = () => {
     const elapsed = clock.getElapsedTime();
 
-    mouse.x += (mouse.tx - mouse.x) * 0.02;
-    mouse.y += (mouse.ty - mouse.y) * 0.02;
+    mouse.x += (mouse.tx - mouse.x) * 0.024;
+    mouse.y += (mouse.ty - mouse.y) * 0.024;
 
-    particles.rotation.z = elapsed * 0.006;
-    particles.rotation.x = mouse.y * 0.016;
-    particles.rotation.y = mouse.x * 0.022;
+    particles.rotation.z = elapsed * 0.009;
+    particles.rotation.x = mouse.y * 0.022;
+    particles.rotation.y = mouse.x * 0.032;
 
     const pos = particlesGeometry.attributes.position.array;
 
     for (let i = 0; i < particleCount; i++) {
       const i3 = i * 3;
-      pos[i3 + 1] += Math.sin(elapsed * 0.22 + i * 0.13) * 0.001;
-      pos[i3] += Math.cos(elapsed * 0.16 + i * 0.08) * 0.00045;
+      pos[i3 + 1] += Math.sin(elapsed * 0.28 + i * 0.14) * 0.0013;
+      pos[i3] += Math.cos(elapsed * 0.18 + i * 0.09) * 0.00065;
     }
 
     particlesGeometry.attributes.position.needsUpdate = true;
 
-    leftGoldGlow.position.y = 1.6 + Math.sin(elapsed * 0.22) * 0.08;
-    leftGoldGlow.position.x = -6.3 + mouse.x * 0.16;
+    leftGoldGlow.position.y = 1.7 + Math.sin(elapsed * 0.22) * 0.1;
+    leftGoldGlow.position.x = -6.1 + mouse.x * 0.18;
 
-    rightBlueGlow.position.y = 0.8 + Math.cos(elapsed * 0.2) * 0.1;
-    rightBlueGlow.position.x = 6.8 + mouse.x * 0.14;
+    rightBlueGlow.position.y = 0.9 + Math.cos(elapsed * 0.2) * 0.11;
+    rightBlueGlow.position.x = 6.8 + mouse.x * 0.15;
 
-    horizonGlow.position.y = -6.7 + Math.sin(elapsed * 0.12) * 0.04;
-    horizonGlow.material.opacity = 0.05 + Math.sin(elapsed * 0.35) * 0.004;
+    horizonGlow.position.y = -6.7 + Math.sin(elapsed * 0.12) * 0.05;
+    horizonGlow.material.opacity = 0.056 + Math.sin(elapsed * 0.35) * 0.005;
 
-    lines[0].position.x = -1.2 + Math.sin(elapsed * 0.24) * 0.12;
-    lines[1].position.x = 1.7 + Math.cos(elapsed * 0.2) * 0.12;
-    lines[2].position.x = 0.1 + Math.sin(elapsed * 0.16) * 0.08;
+    lines[0].position.x = -1.2 + Math.sin(elapsed * 0.24) * 0.14;
+    lines[1].position.x = 1.7 + Math.cos(elapsed * 0.2) * 0.14;
+    lines[2].position.x = 0.1 + Math.sin(elapsed * 0.16) * 0.1;
 
-    lineGroup.rotation.z = mouse.x * 0.008;
-    lineGroup.position.y = mouse.y * 0.06;
+    lineGroup.rotation.z = mouse.x * 0.01;
+    lineGroup.position.y = mouse.y * 0.07;
 
-    camera.position.x = mouse.x * 0.12;
-    camera.position.y = mouse.y * 0.08;
+    camera.position.x = mouse.x * 0.14;
+    camera.position.y = mouse.y * 0.09;
     camera.lookAt(scene.position);
 
     renderer.render(scene, camera);
