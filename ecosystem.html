@@ -8,20 +8,21 @@
     />
 
     <title>Zubolaa Ecosystem | Connected Systems Under One Access Layer</title>
-
     <meta
       name="description"
       content="Explore the Zubolaa Ecosystem — a structured execution environment connecting Academy, Markets, Labs, Infrastructure, Consultancy, Participation, and Access under one controlled direction."
     />
     <meta
       name="keywords"
-      content="Zubolaa, Zubolaa Ecosystem, Zubolaa Academy, Zubolaa Markets, AI systems, infrastructure, consultancy, participation, access layer"
+      content="Zubolaa, Zubolaa Ecosystem, Zubolaa Academy, Zubolaa Markets, Zubolaa Labs, Zubolaa Infrastructure, Zubolaa Consultancy, Zubolaa Participation, Zubolaa Access"
     />
     <meta name="author" content="Zubolaa" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#0b0b0f" />
+    <meta name="theme-color" content="#08090f" />
+    <meta name="format-detection" content="telephone=no" />
 
-    <!-- Open Graph -->
+    <link rel="canonical" href="https://zubolaa.com/ecosystem.html" />
+
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Zubolaa Ecosystem" />
     <meta
@@ -35,114 +36,142 @@
     />
     <meta property="og:site_name" content="Zubolaa" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Zubolaa Ecosystem" />
     <meta
       name="twitter:description"
-      content="Connected systems under one access layer."
+      content="Connected systems under one structured access layer."
     />
     <meta
       name="twitter:image"
       content="https://zubolaa.com/assets/og/zubolaa-ecosystem-og.jpg"
     />
 
-    <link rel="canonical" href="https://zubolaa.com/ecosystem.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Base + Dedicated CSS -->
     <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/ecosystem.css" />
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.161.0/build/three.module.js"
+        }
+      }
+    </script>
   </head>
 
-  <body class="ecosystem-page">
-    <!-- Shared Navbar Include -->
-    <div id="navbar-include"></div>
+  <body data-page="ecosystem" class="ecosystem-page">
+    <div id="global-particles-canvas" aria-hidden="true"></div>
 
-    <!-- Full Page Three.js Canvas -->
-    <div class="ecosystem-three-wrap" aria-hidden="true">
-      <canvas id="ecosystem-three-canvas"></canvas>
-      <div class="ecosystem-screen-vignette"></div>
-      <div class="ecosystem-screen-noise"></div>
-    </div>
+    <div class="site-shell">
+      <div class="page-overlay" aria-hidden="true"></div>
+      <div id="global-ambient-layer" aria-hidden="true"></div>
 
-    <main class="ecosystem-main">
-      <!-- HERO -->
-      <section class="ecosystem-hero ecosystem-section" id="ecosystem-hero">
-        <div class="ecosystem-shell">
-          <div class="ecosystem-hero-copy">
-            <p class="ecosystem-eyebrow">Connected Systems</p>
+      <div class="ecosystem-three-wrap" aria-hidden="true">
+        <canvas id="ecosystem-three-canvas"></canvas>
+        <div class="ecosystem-screen-vignette"></div>
+      </div>
 
-            <h1 class="ecosystem-hero-title">
-              One Ecosystem.<br />
-              Multiple Execution Paths.
-            </h1>
+      <div id="navbar-include"></div>
 
-            <p class="ecosystem-hero-text">
-              Zubolaa is structured as a connected system — where learning,
-              markets, tools, infrastructure, and participation operate under
-              one controlled direction.
-            </p>
+      <main id="main-content" class="ecosystem-main">
+        <!-- HERO -->
+        <section class="ecosystem-hero section" id="ecosystem-hero" aria-labelledby="ecosystem-hero-title">
+          <div class="section-ambient ecosystem-hero-ambient" aria-hidden="true"></div>
 
-            <p class="ecosystem-hero-micro">
-              Clarity replaces noise. Structure replaces guessing.
-            </p>
+          <div class="ecosystem-shell ecosystem-hero-grid">
+            <div class="ecosystem-hero-copy" data-reveal="fade-up">
+              <p class="eyebrow">Connected Systems</p>
+              <p class="ecosystem-ownerline">
+                Built as a structured layer within the Zubolaa environment
+              </p>
 
-            <div class="ecosystem-hero-actions">
-              <a href="#ecosystem-grid" class="ecosystem-btn ecosystem-btn-primary">
-                Explore Ecosystem
-              </a>
-              <a href="#ecosystem-access" class="ecosystem-btn ecosystem-btn-secondary">
-                Get Access
-              </a>
-            </div>
-          </div>
+              <h1 id="ecosystem-hero-title">
+                One Ecosystem.<br />
+                Multiple Execution Paths.
+              </h1>
 
-          <div class="ecosystem-hero-panel">
-            <div class="ecosystem-hero-panel-glow"></div>
+              <p class="ecosystem-hero-lead">
+                Zubolaa is structured as a connected system — where learning,
+                markets, AI bots, infrastructure, consultancy, participation,
+                and access operate under one controlled direction.
+              </p>
 
-            <div class="ecosystem-hero-panel-inner">
-              <span class="ecosystem-panel-label">System View</span>
+              <p class="ecosystem-hero-subline">
+                Clarity replaces noise. Structure replaces guessing.
+              </p>
 
-              <div class="ecosystem-panel-lines">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-
-              <div class="ecosystem-panel-grid">
-                <div>Academy</div>
-                <div>Markets</div>
-                <div>Labs</div>
-                <div>Infrastructure</div>
-                <div>Consultancy</div>
-                <div>Participation</div>
-                <div>Access</div>
+              <div class="ecosystem-actions">
+                <a class="btn btn-primary" href="#ecosystem-grid">
+                  Explore Ecosystem
+                </a>
+                <a class="btn btn-secondary" href="#ecosystem-access">
+                  Get Access
+                </a>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- STATEMENT STRIP -->
-      <section class="ecosystem-statement ecosystem-section">
-        <div class="ecosystem-shell">
-          <div class="ecosystem-statement-band">
+            <div class="ecosystem-hero-visual" aria-hidden="true">
+              <div class="ecosystem-hero-panel" data-reveal="fade-up">
+                <span class="ecosystem-panel-kicker">System View</span>
+
+                <div class="ecosystem-panel-bars">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="ecosystem-panel-modules">
+                  <div>Academy</div>
+                  <div>Markets</div>
+                  <div>Labs</div>
+                  <div>Infrastructure</div>
+                  <div>Consultancy</div>
+                  <div>Participation</div>
+                  <div>Access</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STATEMENT STRIP -->
+        <section
+          class="ecosystem-statement section"
+          id="ecosystem-statement"
+          aria-labelledby="ecosystem-statement-title"
+        >
+          <div class="section-ambient ecosystem-strip-ambient" aria-hidden="true"></div>
+
+          <div class="ecosystem-statement-band" data-reveal="fade-up">
             <span class="ecosystem-statement-shine"></span>
-            <p>
+            <p id="ecosystem-statement-title">
               This is not a collection of pages.
               <strong>This is a controlled execution ecosystem.</strong>
             </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- SYSTEM GRID -->
-      <section class="ecosystem-grid ecosystem-section" id="ecosystem-grid">
-        <div class="ecosystem-shell">
-          <div class="ecosystem-section-head">
-            <p class="ecosystem-kicker">System Grid</p>
-            <h2>Connected systems. Distinct roles.</h2>
-            <p>
+        <!-- SYSTEM GRID -->
+        <section
+          class="ecosystem-grid section"
+          id="ecosystem-grid"
+          aria-labelledby="ecosystem-grid-title"
+        >
+          <div class="section-ambient ecosystem-grid-ambient" aria-hidden="true"></div>
+
+          <div class="section-head" data-reveal="fade-up">
+            <p class="eyebrow">System Grid</p>
+            <h2 id="ecosystem-grid-title">Connected systems. Distinct roles.</h2>
+            <p class="section-lead">
               Every Zubolaa module is built to serve a defined purpose within a
               larger execution environment.
             </p>
@@ -189,7 +218,7 @@
                 data-system="infrastructure"
                 aria-selected="false"
               >
-                <span class="ecosystem-card-visual ecosystem-card-visual-infra"></span>
+                <span class="ecosystem-card-visual ecosystem-card-visual-infrastructure"></span>
                 <span class="ecosystem-card-title">Zubolaa Infrastructure</span>
                 <span class="ecosystem-card-line">Foundation for scalable execution.</span>
               </button>
@@ -228,9 +257,11 @@
               </button>
             </div>
 
-            <aside class="ecosystem-detail-panel" aria-live="polite">
-              <div class="ecosystem-detail-frame"></div>
-
+            <aside
+              class="ecosystem-detail-panel section-card"
+              aria-live="polite"
+              data-reveal="fade-up"
+            >
               <p class="ecosystem-detail-kicker" id="ecosystem-detail-kicker">
                 Selected System
               </p>
@@ -252,56 +283,53 @@
                 <span>Direction</span>
               </div>
 
-              <div class="ecosystem-detail-actions">
-                <a
-                  href="#"
-                  class="ecosystem-btn ecosystem-btn-primary"
-                  id="ecosystem-detail-explore"
-                >
+              <div class="ecosystem-actions ecosystem-detail-actions">
+                <a href="#" id="ecosystem-detail-explore" class="btn btn-primary">
                   Explore
                 </a>
-                <a
-                  href="#"
-                  class="ecosystem-btn ecosystem-btn-secondary"
-                  id="ecosystem-detail-access"
-                >
+                <a href="#" id="ecosystem-detail-access" class="btn btn-secondary">
                   Access
                 </a>
               </div>
             </aside>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- CONNECTION -->
-      <section class="ecosystem-connection ecosystem-section" id="ecosystem-connection">
-        <div class="ecosystem-shell">
+        <!-- CONNECTION -->
+        <section
+          class="ecosystem-connection section section-card"
+          id="ecosystem-connection"
+          aria-labelledby="ecosystem-connection-title"
+        >
+          <div class="section-ambient ecosystem-connection-ambient" aria-hidden="true"></div>
+
           <div class="ecosystem-connection-layout">
-            <div class="ecosystem-connection-copy">
-              <p class="ecosystem-kicker">Connection Layer</p>
-
-              <h2>
+            <div class="section-head ecosystem-connection-copy" data-reveal="fade-up">
+              <p class="eyebrow">Connection Layer</p>
+              <h2 id="ecosystem-connection-title">
                 Independent by design.<br />
                 Connected by structure.
               </h2>
-
-              <p>
+              <p class="section-lead">
                 Each system operates on its own. Together, they form a connected
                 execution layer — where knowledge, tools, access, and direction
                 stay aligned.
               </p>
-
               <p class="ecosystem-connection-micro">
                 Nothing is isolated. Everything has a role.
               </p>
             </div>
 
-            <div class="ecosystem-connection-visual">
+            <div
+              class="ecosystem-connection-visual"
+              data-reveal="fade-up"
+              aria-hidden="true"
+            >
+              <div class="ecosystem-link-core"></div>
               <div class="ecosystem-link-node node-a"></div>
               <div class="ecosystem-link-node node-b"></div>
               <div class="ecosystem-link-node node-c"></div>
               <div class="ecosystem-link-node node-d"></div>
-              <div class="ecosystem-link-core"></div>
 
               <span class="ecosystem-link-line line-1"></span>
               <span class="ecosystem-link-line line-2"></span>
@@ -309,65 +337,73 @@
               <span class="ecosystem-link-line line-4"></span>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- PATHWAYS -->
-      <section class="ecosystem-pathways ecosystem-section" id="ecosystem-pathways">
-        <div class="ecosystem-shell">
-          <div class="ecosystem-section-head">
-            <p class="ecosystem-kicker">Pathways</p>
-            <h2>Choose the path that matches your direction.</h2>
+        <!-- PATHWAYS -->
+        <section
+          class="ecosystem-pathways section"
+          id="ecosystem-pathways"
+          aria-labelledby="ecosystem-pathways-title"
+        >
+          <div class="section-ambient ecosystem-pathways-ambient" aria-hidden="true"></div>
+
+          <div class="section-head" data-reveal="fade-up">
+            <p class="eyebrow">Pathways</p>
+            <h2 id="ecosystem-pathways-title">
+              Choose the path that matches your direction.
+            </h2>
           </div>
 
           <div class="ecosystem-pathways-grid">
-            <article class="ecosystem-pathway-item">
+            <article class="ecosystem-pathway-item section-card" data-reveal="fade-up">
               <h3>Learn</h3>
               <p>Understand before you act.</p>
             </article>
 
-            <article class="ecosystem-pathway-item">
+            <article class="ecosystem-pathway-item section-card" data-reveal="fade-up">
               <h3>Trade</h3>
               <p>Execute with structure.</p>
             </article>
 
-            <article class="ecosystem-pathway-item">
+            <article class="ecosystem-pathway-item section-card" data-reveal="fade-up">
               <h3>Build</h3>
               <p>Create systems, not tasks.</p>
             </article>
 
-            <article class="ecosystem-pathway-item">
+            <article class="ecosystem-pathway-item section-card" data-reveal="fade-up">
               <h3>Partner</h3>
               <p>Align with something bigger.</p>
             </article>
 
-            <article class="ecosystem-pathway-item">
+            <article class="ecosystem-pathway-item section-card" data-reveal="fade-up">
               <h3>Scale</h3>
               <p>Expand with controlled foundations.</p>
             </article>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ACCESS -->
-      <section class="ecosystem-access ecosystem-section" id="ecosystem-access">
-        <div class="ecosystem-shell">
+        <!-- ACCESS -->
+        <section
+          class="ecosystem-access section section-card"
+          id="ecosystem-access"
+          aria-labelledby="ecosystem-access-title"
+        >
+          <div class="section-ambient ecosystem-access-ambient" aria-hidden="true"></div>
+
           <div class="ecosystem-access-layout">
-            <div class="ecosystem-access-visual">
-              <div class="ecosystem-access-gate"></div>
+            <div class="ecosystem-access-visual" data-reveal="fade-up" aria-hidden="true">
               <div class="ecosystem-access-frame"></div>
+              <div class="ecosystem-access-gate"></div>
             </div>
 
-            <div class="ecosystem-access-copy">
-              <p class="ecosystem-kicker">Access Layer</p>
-
-              <h2>
+            <div class="section-head ecosystem-access-copy" data-reveal="fade-up">
+              <p class="eyebrow">Access Layer</p>
+              <h2 id="ecosystem-access-title">
                 One identity.<br />
                 Multiple systems.<br />
                 Controlled access.
               </h2>
-
-              <p>
+              <p class="section-lead">
                 You don’t move through disconnected pages. You move through a
                 structured environment — where access, routing, and progression
                 remain aligned.
@@ -381,41 +417,37 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- FINAL CTA -->
-      <section class="ecosystem-final-cta ecosystem-section">
-        <div class="ecosystem-shell">
-          <div class="ecosystem-final-card">
-            <p class="ecosystem-kicker">Enter Zubolaa</p>
+        <!-- FINAL CTA -->
+        <section
+          class="ecosystem-final section"
+          id="ecosystem-final"
+          aria-labelledby="ecosystem-final-title"
+        >
+          <div class="section-ambient ecosystem-final-ambient" aria-hidden="true"></div>
 
-            <h2>Enter the ecosystem with structure.</h2>
-
-            <p>
-              Choose your direction. Access the right system. Operate with
-              clarity.
+          <div class="ecosystem-final-card section-card" data-reveal="fade-up">
+            <p class="eyebrow">Enter Zubolaa</p>
+            <h2 id="ecosystem-final-title">Enter the ecosystem with structure.</h2>
+            <p class="section-lead">
+              Choose your direction. Access the right system. Operate with clarity.
             </p>
 
-            <div class="ecosystem-final-actions">
-              <a href="#" class="ecosystem-btn ecosystem-btn-primary">
-                Explore Ecosystem
-              </a>
-              <a href="#" class="ecosystem-btn ecosystem-btn-secondary">
-                Get Access
-              </a>
+            <div class="ecosystem-actions ecosystem-final-actions">
+              <a href="#" class="btn btn-primary">Explore Ecosystem</a>
+              <a href="#" class="btn btn-secondary">Get Access</a>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
 
-    <!-- Shared Footer Include -->
-    <div id="footer-include"></div>
+      <div id="footer-include"></div>
+    </div>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r155/three.min.js"></script>
-    <script src="js/ecosystem-three.js"></script>
+    <script src="js/includes.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/ecosystem.js"></script>
+    <script type="module" src="js/ecosystem-three.js"></script>
   </body>
 </html>
