@@ -1,0 +1,221 @@
+/* ========================================
+   ZUBOLAA — LOGIC PAGE
+======================================== */
+
+.logic-page-main {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Hero ---------- */
+
+.logic-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 8rem;
+  overflow: clip;
+}
+
+.logic-hero-ambient,
+.logic-flow-ambient,
+.logic-thinking-ambient,
+.logic-pillars-ambient,
+.logic-applied-ambient,
+.logic-closing-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.logic-hero-ambient::before,
+.logic-closing-ambient::before {
+  content: "";
+  position: absolute;
+  inset: auto 14% 8% 14%;
+  height: 260px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(214, 170, 76, 0.1) 0%,
+      rgba(58, 112, 226, 0.08) 36%,
+      transparent 74%
+    );
+  filter: blur(38px);
+}
+
+.logic-visual {
+  min-height: 540px;
+  display: grid;
+  place-items: center;
+}
+
+.logic-visual-orb {
+  position: relative;
+  width: min(34rem, 88vw);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(12, 22, 46, 0.34) 0%,
+      rgba(0, 0, 0, 0) 66%
+    );
+  filter: drop-shadow(0 0 40px rgba(212, 171, 82, 0.12));
+}
+
+.logic-core {
+  width: 34%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 50% 44%,
+      rgba(255, 237, 190, 0.96) 0%,
+      rgba(216, 173, 77, 0.48) 34%,
+      rgba(57, 108, 214, 0.18) 62%,
+      transparent 76%
+    );
+  box-shadow:
+    0 0 60px rgba(213, 169, 80, 0.16),
+    0 0 120px rgba(59, 112, 226, 0.1);
+  animation: logicCorePulse 8s ease-in-out infinite;
+}
+
+.logic-ring {
+  position: absolute;
+  inset: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  border: 1px solid rgba(236, 214, 154, 0.14);
+  box-shadow: inset 0 0 20px rgba(59, 113, 226, 0.05);
+}
+
+.logic-ring::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.28rem;
+  width: 0.52rem;
+  height: 0.52rem;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 235, 184, 1) 0%,
+      rgba(213, 171, 82, 0.82) 48%,
+      rgba(213, 171, 82, 0) 85%
+    );
+  box-shadow: 0 0 16px rgba(213, 171, 82, 0.4);
+}
+
+.logic-ring-one {
+  width: 50%;
+  height: 50%;
+  animation: logicOrbit 18s linear infinite;
+}
+
+.logic-ring-two {
+  width: 72%;
+  height: 72%;
+  border-color: rgba(86, 143, 255, 0.16);
+  animation: logicOrbitReverse 24s linear infinite;
+}
+
+.logic-ring-three {
+  width: 94%;
+  height: 94%;
+  animation: logicOrbit 32s linear infinite;
+}
+
+/* ---------- Flow Section ---------- */
+
+.logic-flow-section .section-head {
+  margin-bottom: 2rem;
+}
+
+.logic-flow-section .flow-grid {
+  width: min(1200px, calc(100% - 2rem));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* ---------- Thinking Block ---------- */
+
+.logic-thinking .two-column-grid {
+  align-items: start;
+}
+
+/* ---------- Applied Logic ---------- */
+
+.logic-applied .foundation-grid {
+  width: min(1200px, calc(100% - 2rem));
+}
+
+.logic-applied .foundation-card {
+  min-height: 220px;
+}
+
+/* ---------- Closing ---------- */
+
+.logic-closing .about-hero-actions {
+  justify-content: center;
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes logicOrbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes logicOrbitReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes logicCorePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1180px) {
+  .logic-flow-section .flow-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 960px) {
+  .logic-visual {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 720px) {
+  .logic-hero {
+    padding-top: 7rem;
+    min-height: auto;
+  }
+
+  .logic-flow-section .flow-grid {
+    grid-template-columns: 1fr;
+  }
+}
