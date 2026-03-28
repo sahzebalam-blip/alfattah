@@ -1,93 +1,176 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const ecosystemData = {
-    academy: {
-      kicker: "Selected System",
-      title: "Zubolaa Academy",
-      text: "Most people consume information. Very few build clarity. The Academy is designed to structure your thinking, sharpen your understanding, and guide your execution — so decisions are not driven by noise, but by direction.",
-      tags: ["Structured Learning", "Clarity", "Direction"],
-      explore: "#",
-      access: "#"
-    },
-    markets: {
-      kicker: "Selected System",
-      title: "Zubolaa Markets",
-      text: "Markets reward discipline, not excitement. This system focuses on structure, context, and controlled execution — helping you move away from random entries and toward intelligent participation.",
-      tags: ["Structure", "Risk Awareness", "Execution"],
-      explore: "#",
-      access: "#"
-    },
-    labs: {
-      kicker: "Selected System",
-      title: "Zubolaa Labs",
-      text: "Speed without structure creates chaos. Labs is where AI bots and intelligent systems are built for controlled execution — turning ideas into usable, scalable systems.",
-      tags: ["AI Bots", "Automation", "Systems"],
-      explore: "#",
-      access: "#"
-    },
-    infrastructure: {
-      kicker: "Selected System",
-      title: "Zubolaa Infrastructure",
-      text: "Without structure, nothing scales. Infrastructure provides the backbone — from systems to delivery layers — ensuring everything inside Zubolaa operates with stability and precision.",
-      tags: ["Architecture", "Foundation", "Scalability"],
-      explore: "#",
-      access: "#"
-    },
-    consultancy: {
-      kicker: "Selected System",
-      title: "Zubolaa Consultancy",
-      text: "Most problems are not lack of effort. They are lack of direction. Consultancy exists to bring clarity into decisions, structure into plans, and alignment into execution.",
-      tags: ["Guidance", "Strategy", "Alignment"],
-      explore: "#",
-      access: "#"
-    },
-    participation: {
-      kicker: "Selected System",
-      title: "Zubolaa Participation",
-      text: "Growth is faster when it is aligned. Participation connects individuals to the ecosystem through structured involvement — not randomness, not hype, but controlled collaboration.",
-      tags: ["Alignment", "Growth", "Collaboration"],
-      explore: "#",
-      access: "#"
-    },
-    access: {
-      kicker: "Selected System",
-      title: "Zubolaa Access",
-      text: "Access defines movement. This layer controls identity, routing, and system entry — ensuring the ecosystem stays clean, secure, and scalable.",
-      tags: ["Identity", "Routing", "Control"],
-      explore: "#",
-      access: "#"
-    }
-  };
+import * as THREE from "three";
 
-  const cards = document.querySelectorAll(".ecosystem-card");
-  const kickerEl = document.getElementById("ecosystem-detail-kicker");
-  const titleEl = document.getElementById("ecosystem-detail-title");
-  const textEl = document.getElementById("ecosystem-detail-text");
-  const tagsEl = document.getElementById("ecosystem-detail-tags");
-  const exploreEl = document.getElementById("ecosystem-detail-explore");
-  const accessEl = document.getElementById("ecosystem-detail-access");
+const canvas = document.getElementById("ecosystem-three-canvas");
+if (!canvas) {
+  throw new Error("ecosystem-three-canvas not found");
+}
 
-  function renderSystem(key) {
-    const data = ecosystemData[key];
-    if (!data) return;
+const scene = new THREE.Scene();
 
-    kickerEl.textContent = data.kicker;
-    titleEl.textContent = data.title;
-    textEl.textContent = data.text;
-    tagsEl.innerHTML = data.tags.map(tag => `<span>${tag}</span>`).join("");
-    exploreEl.href = data.explore;
-    accessEl.href = data.access;
-  }
+const camera = new THREE.PerspectiveCamera(
+  40,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  100
+);
+camera.position.set(0, 0, 12);
 
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      cards.forEach((item) => {
-        item.classList.remove("is-active");
-        item.setAttribute("aria-selected", "false");
-      });
-
-      card.classList.add("is-active");
-      card.setAttribute("aria-selected", "true");
-      renderSystem(card.dataset.system);
-    });
-  });
+const renderer = new THREE.WebGLRenderer({
+  canvas,
+  antialias: true,
+  alpha: true
 });
+
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+const group = new THREE.Group();
+scene.add(group);
+
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.44);
+scene.add(ambientLight);
+
+const warmLight = new THREE.PointLight(0xf1c97f, 1.25, 30);
+warmLight.position.set(4, 4, 8);
+scene.add(warmLight);
+
+const fillLight = new THREE.PointLight(0xd7ecff, 0.22, 24);
+fillLight.position.set(-6, -2, 6);
+scene.add(fillLight);
+
+const slabMaterial = new THREE.MeshPhysicalMaterial({
+  color: 0xf1c97f,
+  transparent: true,
+  opacity: 0.12,
+  roughness: 0.45,
+  metalness: 0.72,
+  clearcoat: 0.45,
+  clearcoatRoughness: 0.4
+});
+
+const wireMaterial = new THREE.MeshBasicMaterial({
+  color: 0xf1c97f,
+  transparent: true,
+  opacity: 0.12
+});
+
+const planeGeometry = new THREE.BoxGeometry(2.2, 0.06, 1.2);
+const lineGeometry = new THREE.BoxGeometry(0.08, 2.8, 0.08);
+const frameGeometry = new THREE.BoxGeometry(1.6, 1.6, 0.06);
+
+const slabs = [];
+const frames = [];
+const lines = [];
+
+for (let i = 0; i < 10; i++) {
+  const slab = new THREE.Mesh(planeGeometry, slabMaterial.clone());
+  slab.position.set(
+    (Math.random() - 0.5) * 14,
+    (Math.random() - 0.5) * 10,
+    (Math.random() - 0.5) * 4
+  );
+  slab.rotation.set(
+    Math.random() * 0.5,
+    Math.random() * 0.9,
+    Math.random() * 0.24
+  );
+  slab.userData = {
+    speed: 0.001 + Math.random() * 0.002
+  };
+  group.add(slab);
+  slabs.push(slab);
+}
+
+for (let i = 0; i < 6; i++) {
+  const frame = new THREE.Mesh(frameGeometry, wireMaterial.clone());
+  frame.position.set(
+    (Math.random() - 0.5) * 12,
+    (Math.random() - 0.5) * 9,
+    -1 - Math.random() * 2.5
+  );
+  frame.rotation.set(
+    Math.random() * 0.4,
+    Math.random() * 0.5,
+    Math.random() * 0.2
+  );
+  frame.scale.setScalar(0.8 + Math.random() * 0.8);
+  frame.userData = {
+    speed: 0.001 + Math.random() * 0.0012
+  };
+  group.add(frame);
+  frames.push(frame);
+}
+
+for (let i = 0; i < 8; i++) {
+  const line = new THREE.Mesh(lineGeometry, wireMaterial.clone());
+  line.position.set(
+    (Math.random() - 0.5) * 12,
+    (Math.random() - 0.5) * 8,
+    -0.5 - Math.random() * 2
+  );
+  line.rotation.z = (Math.random() - 0.5) * 0.8;
+  line.userData = {
+    speed: 0.0008 + Math.random() * 0.0012
+  };
+  group.add(line);
+  lines.push(line);
+}
+
+let targetScrollFactor = 0;
+let currentScrollFactor = 0;
+let mouseX = 0;
+let mouseY = 0;
+
+function updateScrollFactor() {
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
+  targetScrollFactor = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+}
+
+updateScrollFactor();
+window.addEventListener("scroll", updateScrollFactor, { passive: true });
+
+window.addEventListener("mousemove", (event) => {
+  mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  mouseY = (event.clientY / window.innerHeight) * 2 - 1;
+});
+
+function onResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
+}
+
+window.addEventListener("resize", onResize);
+
+const clock = new THREE.Clock();
+
+function animate() {
+  const elapsed = clock.getElapsedTime();
+  currentScrollFactor += (targetScrollFactor - currentScrollFactor) * 0.04;
+
+  group.rotation.y += (mouseX * 0.08 - group.rotation.y) * 0.02;
+  group.rotation.x += (-mouseY * 0.04 - group.rotation.x) * 0.02;
+  group.position.y += ((-currentScrollFactor * 2.2) - group.position.y) * 0.03;
+
+  slabs.forEach((slab, index) => {
+    slab.rotation.y += slab.userData.speed;
+    slab.rotation.x += slab.userData.speed * 0.45;
+    slab.position.y += Math.sin(elapsed * 0.5 + index) * 0.0028;
+  });
+
+  frames.forEach((frame, index) => {
+    frame.rotation.z += frame.userData.speed;
+    frame.position.x += Math.sin(elapsed * 0.32 + index) * 0.0014;
+  });
+
+  lines.forEach((line, index) => {
+    line.rotation.z += Math.sin(elapsed * 0.24 + index) * 0.0008;
+    line.position.y += Math.cos(elapsed * 0.4 + index) * 0.0014;
+  });
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+
+animate();
