@@ -728,3 +728,40 @@
     font-size: 0.88rem;
   }
 }
+/* ===== FINAL HERO POLISH ===== */
+
+.hero-signal-panel {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    inset 0 -25px 50px rgba(255,215,120,0.05),
+    0 30px 80px rgba(0,0,0,0.45),
+    0 0 40px rgba(255,215,120,0.08);
+}
+
+/* bars depth boost */
+.signal-lines span {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 6px 18px rgba(0,0,0,0.25),
+    0 0 12px rgba(255,215,120,0.04);
+}
+
+/* slight hover lift */
+.signal-lines span:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.07),
+    0 10px 24px rgba(0,0,0,0.35),
+    0 0 16px rgba(255,215,120,0.08);
+}
+
+/* panel subtle float */
+.hero-signal-panel {
+  animation: panelFloat 6s ease-in-out infinite;
+}
+
+@keyframes panelFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
