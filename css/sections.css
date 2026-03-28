@@ -20,11 +20,12 @@
   position: relative;
   border-radius: 1.8rem;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015)),
-    rgba(10, 12, 18, 0.64);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+    linear-gradient(135deg, rgba(214, 170, 76, 0.02), transparent 38%, rgba(77, 126, 230, 0.02)),
+    rgba(10, 12, 18, 0.66);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.34),
+    0 24px 70px rgba(0, 0, 0, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -127,23 +128,18 @@
   border-radius: 1.45rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015)),
-    rgba(12, 14, 20, 0.62);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015)),
+    linear-gradient(120deg, rgba(214, 170, 76, 0.02), transparent 36%, rgba(77, 126, 230, 0.025)),
+    rgba(12, 14, 20, 0.64);
   box-shadow:
     0 16px 42px rgba(0, 0, 0, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
   overflow: hidden;
-}
-
-.foundation-card::before,
-.flow-card::before,
-.mini-system-card::before,
-.principle-item::before,
-.logic-pill::before,
-.transition-line::before {
-  content: "";
-  position: absolute;
-  pointer-events: none;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease;
 }
 
 .foundation-card::before,
@@ -151,9 +147,25 @@
 .mini-system-card::before,
 .principle-item::before,
 .logic-pill::before {
+  content: "";
+  position: absolute;
   inset: 0;
+  pointer-events: none;
   background:
     linear-gradient(120deg, rgba(214, 170, 76, 0.08), transparent 35%, rgba(77, 126, 230, 0.06));
+  opacity: 0.55;
+}
+
+.foundation-card:hover,
+.flow-card:hover,
+.mini-system-card:hover,
+.principle-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(122, 191, 255, 0.18);
+  box-shadow:
+    0 22px 44px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(241, 201, 127, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .foundation-card h3,
@@ -179,51 +191,82 @@
   color: rgba(232, 228, 220, 0.74);
 }
 
-/* ---------- Transition strip ---------- */
+/* ---------- Transition strip (upgraded) ---------- */
 
 .transition-strip {
   position: relative;
-  padding-top: 0.75rem;
-  padding-bottom: 2rem;
+  padding-top: 16px;
+  padding-bottom: 40px;
 }
 
 .transition-line {
   position: relative;
-  width: min(100%, 920px);
+  width: min(100%, 980px);
   margin: 0 auto;
   text-align: center;
-  padding: 1.3rem 1.5rem;
+  padding: 32px 40px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.016));
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+    radial-gradient(circle at 20% 50%, rgba(241, 201, 127, 0.06), transparent 26%),
+    radial-gradient(circle at 80% 50%, rgba(122, 191, 255, 0.06), transparent 26%),
+    linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012)),
+    rgba(8, 10, 16, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255,255,255,0.05);
   overflow: hidden;
 }
 
 .transition-line::before {
-  left: 10%;
-  right: 10%;
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
   top: 0;
   height: 1px;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(241, 201, 127, 0.28),
-    rgba(122, 191, 255, 0.22),
+    rgba(241, 201, 127, 0.34),
+    rgba(122, 191, 255, 0.28),
     transparent
   );
-  opacity: 0.82;
+  opacity: 0.9;
+}
+
+.transition-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      115deg,
+      rgba(241, 201, 127, 0.05),
+      transparent 34%,
+      rgba(122, 191, 255, 0.05) 68%,
+      transparent
+    );
+  opacity: 0.75;
 }
 
 .transition-line p {
   position: relative;
   z-index: 1;
-  max-width: 58ch;
+  max-width: 34ch;
   margin: 0 auto;
-  color: rgba(244, 241, 234, 0.74);
-  line-height: 1.75;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.7rem, 2.5vw, 2.35rem);
+  line-height: 1.32;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+  color: rgba(246, 241, 233, 0.94);
+  text-wrap: balance;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.2);
 }
 
 /* ---------- Home About block ---------- */
@@ -255,19 +298,6 @@
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1rem;
-}
-
-.principle-item {
-  transition:
-    transform 0.28s ease,
-    border-color 0.28s ease,
-    box-shadow 0.28s ease;
-}
-
-.principle-item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(122, 191, 255, 0.2);
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
 }
 
 .principle-icon {
@@ -342,18 +372,21 @@
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.09);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.018));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.018)),
+    rgba(10, 12, 18, 0.62);
   color: #f3f1ea;
   overflow: hidden;
   transition:
     transform 0.26s ease,
     border-color 0.26s ease,
-    background 0.26s ease;
+    background 0.26s ease,
+    box-shadow 0.26s ease;
 }
 
 .logic-pill:hover {
   transform: translateY(-2px);
   border-color: rgba(241, 201, 127, 0.18);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .logic-icon {
@@ -516,13 +549,20 @@
 
 @media (max-width: 900px) {
   .transition-strip {
-    padding-top: 0.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 10px;
+    padding-bottom: 26px;
   }
 
   .transition-line {
-    padding: 1.2rem 1.25rem;
-    border-radius: 28px;
+    width: min(100%, 100%);
+    padding: 24px 22px;
+    border-radius: 30px;
+  }
+
+  .transition-line p {
+    max-width: 30ch;
+    font-size: clamp(1.45rem, 5vw, 1.95rem);
+    line-height: 1.34;
   }
 
   .about {
@@ -593,12 +633,14 @@
 
 @media (max-width: 640px) {
   .transition-line {
-    padding: 18px 16px;
-    border-radius: 22px;
+    padding: 22px 18px;
+    border-radius: 24px;
   }
 
   .transition-line p {
     max-width: 100%;
+    font-size: 1.38rem;
+    line-height: 1.36;
   }
 
   .about {
@@ -652,7 +694,12 @@
 
 @media (max-width: 420px) {
   .transition-line {
-    padding: 16px 14px;
+    padding: 20px 16px;
+  }
+
+  .transition-line p {
+    font-size: 1.24rem;
+    line-height: 1.38;
   }
 
   .principle-item {
