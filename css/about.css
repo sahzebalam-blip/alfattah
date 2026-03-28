@@ -1,3 +1,8 @@
+/* ========================================
+   ZUBOLAA — ABOUT PAGE VISUAL LAYER
+   Uses shared structure from sections.css
+======================================== */
+
 .about-page {
   background:
     radial-gradient(circle at 20% 15%, rgba(220, 176, 74, 0.08), transparent 28%),
@@ -9,6 +14,8 @@
   position: relative;
   z-index: 2;
 }
+
+/* ---------- Hero ---------- */
 
 .about-hero {
   position: relative;
@@ -130,143 +137,10 @@
   animation: orbitRotate 32s linear infinite;
 }
 
+/* ---------- About page specific section moods ---------- */
+
 .about-text-grid {
   align-items: start;
-}
-
-.foundation-grid {
-  width: min(1200px, calc(100% - 2rem));
-  margin: 2.2rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.foundation-card {
-  min-height: 220px;
-  padding: 1.4rem 1.2rem;
-}
-
-.foundation-card h3,
-.flow-card h3,
-.mini-system-card h3 {
-  margin: 0 0 0.75rem;
-  font-size: 1.08rem;
-  color: #f6efdf;
-}
-
-.foundation-card p,
-.flow-card p,
-.mini-system-card p {
-  margin: 0;
-  line-height: 1.72;
-  color: rgba(231, 228, 220, 0.76);
-}
-
-.principle-shell,
-.closing-shell {
-  width: min(900px, calc(100% - 2rem));
-  margin: 0 auto;
-  text-align: center;
-}
-
-.principle-shell h2,
-.closing-shell h2 {
-  margin: 0.35rem 0 1rem;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.06;
-  letter-spacing: -0.03em;
-}
-
-.principle-lead {
-  max-width: 740px;
-  margin: 0 auto;
-}
-
-.principle-microcopy {
-  margin: 1.35rem 0 0;
-  font-size: 0.96rem;
-  color: rgba(221, 188, 109, 0.88);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.flow-grid {
-  width: min(1200px, calc(100% - 2rem));
-  margin: 2rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.flow-card {
-  position: relative;
-  min-height: 210px;
-  padding: 1.4rem 1.2rem;
-}
-
-.flow-step {
-  display: inline-flex;
-  margin-bottom: 1rem;
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  color: rgba(219, 181, 95, 0.92);
-}
-
-.ecosystem-mini-grid {
-  width: min(1200px, calc(100% - 2rem));
-  margin: 2rem auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.mini-system-card {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.6rem;
-  padding: 1.35rem 1.2rem;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02)),
-    rgba(10, 12, 19, 0.64);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow:
-    0 18px 50px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.mini-system-card::before,
-.foundation-card::before,
-.flow-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(120deg, rgba(217, 173, 79, 0.08), transparent 36%, rgba(73, 129, 236, 0.07));
-  pointer-events: none;
-}
-
-.experience-points {
-  width: min(1100px, calc(100% - 2rem));
-  margin: 2rem auto 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
-  justify-content: center;
-}
-
-.experience-points span {
-  padding: 0.95rem 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
-  background: rgba(13, 15, 23, 0.58);
-  color: rgba(242, 236, 225, 0.82);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 10px 28px rgba(0, 0, 0, 0.16);
 }
 
 .about-hero-ambient,
@@ -293,6 +167,32 @@
     radial-gradient(circle at center, rgba(214, 170, 76, 0.1) 0%, rgba(58, 112, 226, 0.08) 36%, transparent 74%);
   filter: blur(36px);
 }
+
+.about-intent .section-card,
+.about-foundation .section-card,
+.about-flow .section-card,
+.about-ecosystem .section-card,
+.about-closing.section-card {
+  isolation: isolate;
+}
+
+/* ---------- About-specific microcopy ---------- */
+
+.principle-microcopy {
+  margin: 1.35rem 0 0;
+  font-size: 0.96rem;
+  color: rgba(221, 188, 109, 0.88);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ---------- Experience area ---------- */
+
+.about-experience .section-head {
+  margin-bottom: 2rem;
+}
+
+/* ---------- Animations ---------- */
 
 @keyframes orbitRotate {
   from {
@@ -323,15 +223,7 @@
   }
 }
 
-@media (max-width: 1180px) {
-  .foundation-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .flow-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+/* ---------- Responsive ---------- */
 
 @media (max-width: 960px) {
   .about-hero-grid {
@@ -346,10 +238,6 @@
   .about-hero-visual {
     min-height: 380px;
   }
-
-  .ecosystem-mini-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 720px) {
@@ -358,23 +246,8 @@
     min-height: auto;
   }
 
-  .foundation-grid,
-  .flow-grid,
-  .ecosystem-mini-grid {
-    grid-template-columns: 1fr;
-  }
-
   .about-hero-actions {
     flex-direction: column;
     align-items: stretch;
-  }
-
-  .experience-points {
-    justify-content: flex-start;
-  }
-
-  .experience-points span {
-    width: 100%;
-    text-align: center;
   }
 }
