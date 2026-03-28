@@ -1,153 +1,93 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const panel = document.getElementById("eco-panel-content");
-  const cards = document.querySelectorAll(".eco-system-card");
-  const isMobile = () => window.innerWidth <= 767;
-
-  const systemData = {
+  const ecosystemData = {
     academy: {
+      kicker: "Selected System",
       title: "Zubolaa Academy",
-      desc: "A structured learning layer built to support mindset, knowledge flow, discipline, and long-term development.",
-      points: [
-        "Structured learning pathways",
-        "Mindset and development framework",
-        "Guided long-term progression"
-      ],
+      text: "Most people consume information. Very few build clarity. The Academy is designed to structure your thinking, sharpen your understanding, and guide your execution — so decisions are not driven by noise, but by direction.",
+      tags: ["Structured Learning", "Clarity", "Direction"],
       explore: "#",
       access: "#"
     },
     markets: {
+      kicker: "Selected System",
       title: "Zubolaa Markets",
-      desc: "A focused market layer designed for intelligence, execution awareness, analytical structure, and clearer decision environments.",
-      points: [
-        "Market intelligence flow",
-        "Execution clarity and structure",
-        "Decision support environment"
-      ],
-      explore: "#",
-      access: "#"
-    },
-    participation: {
-      title: "Zubolaa Participation",
-      desc: "A defined participation layer that helps users move through guided roles, pathways, and structured involvement models.",
-      points: [
-        "Defined participation paths",
-        "Role-based involvement flow",
-        "Structured entry guidance"
-      ],
+      text: "Markets reward discipline, not excitement. This system focuses on structure, context, and controlled execution — helping you move away from random entries and toward intelligent participation.",
+      tags: ["Structure", "Risk Awareness", "Execution"],
       explore: "#",
       access: "#"
     },
     labs: {
+      kicker: "Selected System",
       title: "Zubolaa Labs",
-      desc: "An evolving layer for tools, experiments, new ideas, structured testing, and capability expansion across the ecosystem.",
-      points: [
-        "Tools and functional experiments",
-        "Capability expansion layer",
-        "Iterative system evolution"
-      ],
-      explore: "#",
-      access: "#"
-    },
-    core: {
-      title: "Zubolaa Core",
-      desc: "The central alignment layer that holds identity, structure, logic, and overarching directional continuity across the ecosystem.",
-      points: [
-        "Shared identity and logic",
-        "Central alignment framework",
-        "Direction continuity layer"
-      ],
+      text: "Speed without structure creates chaos. Labs is where AI bots and intelligent systems are built for controlled execution — turning ideas into usable, scalable systems.",
+      tags: ["AI Bots", "Automation", "Systems"],
       explore: "#",
       access: "#"
     },
     infrastructure: {
+      kicker: "Selected System",
       title: "Zubolaa Infrastructure",
-      desc: "The foundational support layer built for continuity, system stability, architecture support, and scalable ecosystem growth.",
-      points: [
-        "Support for continuity and scale",
-        "Foundational system architecture",
-        "Operational stability layer"
-      ],
+      text: "Without structure, nothing scales. Infrastructure provides the backbone — from systems to delivery layers — ensuring everything inside Zubolaa operates with stability and precision.",
+      tags: ["Architecture", "Foundation", "Scalability"],
+      explore: "#",
+      access: "#"
+    },
+    consultancy: {
+      kicker: "Selected System",
+      title: "Zubolaa Consultancy",
+      text: "Most problems are not lack of effort. They are lack of direction. Consultancy exists to bring clarity into decisions, structure into plans, and alignment into execution.",
+      tags: ["Guidance", "Strategy", "Alignment"],
+      explore: "#",
+      access: "#"
+    },
+    participation: {
+      kicker: "Selected System",
+      title: "Zubolaa Participation",
+      text: "Growth is faster when it is aligned. Participation connects individuals to the ecosystem through structured involvement — not randomness, not hype, but controlled collaboration.",
+      tags: ["Alignment", "Growth", "Collaboration"],
+      explore: "#",
+      access: "#"
+    },
+    access: {
+      kicker: "Selected System",
+      title: "Zubolaa Access",
+      text: "Access defines movement. This layer controls identity, routing, and system entry — ensuring the ecosystem stays clean, secure, and scalable.",
+      tags: ["Identity", "Routing", "Control"],
       explore: "#",
       access: "#"
     }
   };
 
-  function panelHTML(data) {
-    return `
-      <h3>${data.title}</h3>
-      <p>${data.desc}</p>
-      <ul class="eco-panel-points">
-        ${data.points.map((point) => `<li>${point}</li>`).join("")}
-      </ul>
-      <div class="eco-panel-actions">
-        <a href="${data.explore}" class="eco-btn eco-btn-primary">Explore</a>
-        <a href="${data.access}" class="eco-btn eco-btn-secondary">Access</a>
-      </div>
-    `;
-  }
+  const cards = document.querySelectorAll(".ecosystem-card");
+  const kickerEl = document.getElementById("ecosystem-detail-kicker");
+  const titleEl = document.getElementById("ecosystem-detail-title");
+  const textEl = document.getElementById("ecosystem-detail-text");
+  const tagsEl = document.getElementById("ecosystem-detail-tags");
+  const exploreEl = document.getElementById("ecosystem-detail-explore");
+  const accessEl = document.getElementById("ecosystem-detail-access");
 
-  function inlineHTML(data) {
-    return `
-      <div class="eco-inline-detail">
-        <h3>${data.title}</h3>
-        <p>${data.desc}</p>
-        <ul>
-          ${data.points.map((point) => `<li>${point}</li>`).join("")}
-        </ul>
-        <div class="eco-inline-actions">
-          <a href="${data.explore}" class="eco-btn eco-btn-primary">Explore</a>
-          <a href="${data.access}" class="eco-btn eco-btn-secondary">Access</a>
-        </div>
-      </div>
-    `;
-  }
-
-  function clearInlineDetails() {
-    cards.forEach((card) => {
-      const oldInline = card.querySelector(".eco-inline-detail");
-      if (oldInline) oldInline.remove();
-    });
-  }
-
-  function setActiveCard(targetCard) {
-    const key = targetCard.dataset.system;
-    const data = systemData[key];
+  function renderSystem(key) {
+    const data = ecosystemData[key];
     if (!data) return;
 
-    cards.forEach((card) => {
-      card.classList.remove("active");
-      card.setAttribute("aria-selected", "false");
-    });
-
-    targetCard.classList.add("active");
-    targetCard.setAttribute("aria-selected", "true");
-
-    if (isMobile()) {
-      clearInlineDetails();
-      targetCard.insertAdjacentHTML("beforeend", inlineHTML(data));
-      return;
-    }
-
-    if (!panel) return;
-
-    panel.classList.add("is-switching");
-
-    setTimeout(() => {
-      panel.innerHTML = panelHTML(data);
-      panel.classList.remove("is-switching");
-    }, 180);
+    kickerEl.textContent = data.kicker;
+    titleEl.textContent = data.title;
+    textEl.textContent = data.text;
+    tagsEl.innerHTML = data.tags.map(tag => `<span>${tag}</span>`).join("");
+    exploreEl.href = data.explore;
+    accessEl.href = data.access;
   }
 
   cards.forEach((card) => {
-    card.addEventListener("click", () => setActiveCard(card));
-  });
+    card.addEventListener("click", () => {
+      cards.forEach((item) => {
+        item.classList.remove("is-active");
+        item.setAttribute("aria-selected", "false");
+      });
 
-  window.addEventListener("resize", () => {
-    const active = document.querySelector(".eco-system-card.active") || cards[0];
-    if (active) setActiveCard(active);
+      card.classList.add("is-active");
+      card.setAttribute("aria-selected", "true");
+      renderSystem(card.dataset.system);
+    });
   });
-
-  if (cards.length) {
-    setActiveCard(cards[0]);
-  }
 });
