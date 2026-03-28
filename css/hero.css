@@ -4,7 +4,7 @@
 
 .hero {
   position: relative;
-  padding: 9.5rem 0 6rem;
+  padding: 9.4rem 0 6rem;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -16,169 +16,384 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 18% 30%, rgba(255,210,110,0.12), transparent 32%),
-    radial-gradient(circle at 78% 28%, rgba(83,145,255,0.08), transparent 34%);
+    radial-gradient(
+      circle at 18% 30%,
+      rgba(255, 210, 110, 0.11),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 78% 28%,
+      rgba(83, 145, 255, 0.08),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 50% 112%,
+      rgba(255, 188, 90, 0.08),
+      transparent 34%
+    );
   pointer-events: none;
+  z-index: 0;
 }
 
 .hero::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 160px;
-  background: linear-gradient(to bottom, transparent, rgba(8,9,15,0.9));
+  inset: auto 0 0 0;
+  height: 170px;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 9, 15, 0),
+    rgba(8, 9, 15, 0.5),
+    rgba(8, 9, 15, 0.88)
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero .section-ambient.hero-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(
+      115deg,
+      rgba(255, 214, 112, 0.04),
+      transparent 26%,
+      transparent 72%,
+      rgba(94, 167, 255, 0.045)
+    );
+  filter: blur(10px);
+  opacity: 0.92;
 }
 
 /* =========================
    HERO GRID
 ========================= */
 
-.hero-grid {
+.hero-grid,
+.hero-grid-launchpad {
+  position: relative;
+  z-index: 1;
   width: min(1280px, calc(100% - 48px));
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 3rem;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+  gap: 3.25rem;
   align-items: center;
 }
 
-/* =========================
-   HERO TEXT
-========================= */
-
 .hero-copy {
-  max-width: 680px;
+  max-width: 720px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 215, 120, 0.82);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 215, 120, 0.1),
+    rgba(255, 215, 120, 0.9)
+  );
+  box-shadow: 0 0 12px rgba(255, 215, 120, 0.18);
+}
+
+.hero-ownerline {
+  margin: 0 0 1.1rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: rgba(167, 185, 214, 0.78);
 }
 
 .hero h1 {
   margin: 0;
+  max-width: 11.2ch;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(3rem, 6vw, 5.2rem);
-  line-height: 1;
+  font-size: clamp(3.2rem, 7vw, 5.45rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   color: #f9fbff;
+  text-wrap: balance;
+  text-shadow:
+    0 0 20px rgba(255, 215, 120, 0.05),
+    0 10px 35px rgba(0, 0, 0, 0.32);
 }
 
 .hero-lead {
-  margin-top: 1.5rem;
+  margin: 1.55rem 0 0;
+  max-width: 640px;
   font-size: 1.05rem;
-  line-height: 1.85;
-  color: rgba(220,229,244,0.85);
+  line-height: 1.9;
+  color: rgba(220, 229, 244, 0.84);
 }
 
 .hero-subline {
-  margin-top: 0.8rem;
-  color: rgba(255,215,120,0.7);
+  margin: 1rem 0 0;
+  font-size: 0.96rem;
+  line-height: 1.8;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(255, 215, 120, 0.74);
 }
 
 /* =========================
-   BUTTONS
+   HERO ACTIONS
 ========================= */
 
 .hero-actions {
-  margin-top: 2rem;
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.95rem;
+  margin-top: 2rem;
 }
 
-.btn {
-  padding: 0.9rem 1.4rem;
+.hero .btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0.92rem 1.45rem;
   border-radius: 999px;
   text-decoration: none;
+  font-size: 0.92rem;
   font-weight: 600;
-  transition: 0.3s ease;
-}
-
-.btn-primary {
-  background: rgba(255,215,120,0.15);
-  border: 1px solid rgba(255,215,120,0.3);
-}
-
-.btn-secondary {
-  background: rgba(20,25,40,0.6);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-/* =========================
-   HERO PANEL
-========================= */
-
-.hero-visual {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero-signal-panel {
-  width: 100%;
-  max-width: 440px;
-  padding: 1.8rem 1.3rem;
-  border-radius: 24px;
-
-  background: rgba(15,18,28,0.7);
-  border: 1px solid rgba(255,215,120,0.12);
-
-  backdrop-filter: blur(12px);
-}
-
-/* =========================
-   SIGNAL LINES (FIXED)
-========================= */
-
-.signal-lines {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-
-.signal-lines span {
-  display: flex;
-  align-items: center;
-
-  height: 58px;
-  padding-left: 2.6rem;
-  padding-right: 1rem;
-
-  border-radius: 999px;
-
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.05);
-
-  color: rgba(240,245,255,0.9);
-  font-size: 0.9rem;
-  font-weight: 600;
-
-  position: relative;
+  letter-spacing: 0.02em;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
   overflow: hidden;
 }
 
-/* DOT */
-.signal-lines span::after {
+.hero .btn::before {
   content: "";
   position: absolute;
-  left: 16px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-
-  background: #ffd56a;
-  box-shadow: 0 0 12px rgba(255,215,120,0.4);
+  top: -55%;
+  left: -70%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  transform: rotate(24deg);
+  transition: left 0.65s ease;
+  pointer-events: none;
 }
 
-/* LIGHT SWEEP */
+.hero .btn:hover::before {
+  left: 110%;
+}
+
+.hero .btn-primary {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 214, 112, 0.2),
+    rgba(255, 214, 112, 0.07)
+  );
+  border: 1px solid rgba(255, 214, 112, 0.28);
+  color: #fdfdff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 12px 30px rgba(255, 196, 88, 0.12);
+}
+
+.hero .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 16px 36px rgba(255, 196, 88, 0.18),
+    0 0 22px rgba(255, 214, 112, 0.12);
+}
+
+.hero .btn-secondary {
+  background: rgba(17, 22, 34, 0.58);
+  border: 1px solid rgba(130, 162, 219, 0.14);
+  color: rgba(236, 242, 255, 0.92);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.hero .btn-secondary:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 214, 112, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 14px 28px rgba(0, 0, 0, 0.24),
+    0 0 18px rgba(94, 167, 255, 0.08);
+}
+
+/* =========================
+   HERO VISUAL / SIDE PANEL
+========================= */
+
+.hero-visual,
+.hero-visual-launchpad {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 500px;
+}
+
+.hero-visual::before,
+.hero-visual-launchpad::before {
+  content: "";
+  position: absolute;
+  inset: 12% 8% 10% 16%;
+  border-radius: 40px;
+  background:
+    radial-gradient(
+      circle at 30% 28%,
+      rgba(255, 215, 120, 0.14),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 70% 68%,
+      rgba(94, 167, 255, 0.12),
+      transparent 32%
+    );
+  filter: blur(18px);
+  opacity: 0.84;
+  pointer-events: none;
+}
+
+.hero-signal-panel {
+  position: relative;
+  width: min(470px, 100%);
+  padding: 1.85rem 1.35rem 1.3rem;
+  border-radius: 28px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(22, 28, 42, 0.72),
+      rgba(10, 12, 20, 0.62)
+    );
+  border: 1px solid rgba(255, 215, 120, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -20px 40px rgba(255, 215, 120, 0.035),
+    0 22px 60px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+}
+
+.hero-signal-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.045) 28%,
+      transparent 52%
+    );
+  pointer-events: none;
+}
+
+.hero-signal-panel::after {
+  content: "";
+  position: absolute;
+  inset: auto 22px 0 22px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 120, 0.26),
+    transparent
+  );
+  box-shadow: 0 0 18px rgba(255, 215, 120, 0.12);
+  pointer-events: none;
+}
+
+.signal-kicker {
+  display: inline-block;
+  margin-bottom: 1.05rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(239, 243, 252, 0.92);
+}
+
+/* =========================
+   HERO SIGNAL LINES UPGRADE
+========================= */
+
+.signal-lines {
+  position: relative;
+  display: grid;
+  gap: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+.signal-lines span {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 62px;
+  padding: 0 2.6rem 0 2.9rem;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 215, 120, 0.035),
+      rgba(94, 167, 255, 0.06),
+      rgba(255, 215, 120, 0.025)
+    );
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: rgba(236, 242, 252, 0.92);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  animation: signalBarFloat 5s ease-in-out infinite;
+}
+
 .signal-lines span::before {
   content: "";
   position: absolute;
   inset: 0;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,215,120,0.2),
-    transparent
-  );
-
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 215, 120, 0.22),
+      transparent
+    );
   transform: translateX(-100%);
-  animation: sweep 5s linear infinite;
+  animation: heroSignalSweep 5.5s linear infinite;
+}
+
+.signal-lines span:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.signal-lines span:nth-child(3) {
+  animation-delay: 1s;
 }
 
 .signal-lines span:nth-child(2)::before {
@@ -189,60 +404,327 @@
   animation-delay: 2s;
 }
 
+.signal-lines span::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 120, 1),
+    rgba(255, 215, 120, 0.42)
+  );
+  box-shadow:
+    0 0 12px rgba(255, 215, 120, 0.6),
+    0 0 22px rgba(255, 215, 120, 0.2);
+  transform: translateY(-50%);
+  animation: dotPulse 2.5s ease-in-out infinite;
+}
+
+/* subtle routing indicator */
+.signal-lines span .signal-arrow {
+  display: none;
+}
+
+.signal-lines span {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025),
+    0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.signal-lines span > * {
+  position: relative;
+  z-index: 1;
+}
+
+.signal-lines span::marker {
+  display: none;
+}
+
 /* =========================
    SIGNAL POINTS
 ========================= */
 
 .signal-points {
-  margin-top: 1.2rem;
   display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 0.7rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
 }
 
 .signal-points span {
-  padding: 0.8rem 1rem;
-  border-radius: 14px;
-
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.05);
-
-  font-size: 0.85rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 54px;
+  padding: 0.9rem 1rem 0.9rem 1rem;
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.01)
+    );
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: rgba(234, 241, 251, 0.92);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 8px 22px rgba(0, 0, 0, 0.16);
 }
 
 /* =========================
-   ANIMATION
+   REVEAL SUPPORT
 ========================= */
 
-@keyframes sweep {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(120%); }
+[data-reveal="fade-up"] {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* =========================
-   RESPONSIVE
+   ANIMATIONS
 ========================= */
 
-@media (max-width: 900px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
+@keyframes heroSignalSweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.1;
   }
-
-  .hero-visual {
-    justify-content: flex-start;
+  20% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.95;
+  }
+  80% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateX(130%);
+    opacity: 0.08;
   }
 }
 
-@media (max-width: 600px) {
+@keyframes signalBarFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes dotPulse {
+  0% {
+    transform: translateY(-50%) scale(0.9);
+    opacity: 0.72;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.22);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) scale(0.9);
+    opacity: 0.72;
+  }
+}
+
+/* =========================
+   LARGE SCREENS
+========================= */
+
+@media (min-width: 1440px) {
+  .hero-grid,
+  .hero-grid-launchpad {
+    width: min(1360px, calc(100% - 64px));
+    gap: 4rem;
+  }
+
+  .hero-visual,
+  .hero-visual-launchpad {
+    min-height: 560px;
+  }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1080px) {
   .hero {
-    padding: 8rem 0 4rem;
+    padding: 9.1rem 0 5.4rem;
+  }
+
+  .hero-grid,
+  .hero-grid-launchpad {
+    grid-template-columns: 1fr;
+    gap: 2.3rem;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    max-width: 12ch;
+  }
+
+  .hero-visual,
+  .hero-visual-launchpad {
+    justify-content: flex-start;
+    min-height: auto;
+  }
+
+  .hero-signal-panel {
+    width: min(640px, 100%);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 8.1rem 0 4.8rem;
+  }
+
+  .hero-grid,
+  .hero-grid-launchpad {
+    width: min(100% - 28px, 100%);
+    gap: 2rem;
+  }
+
+  .hero-ownerline {
+    font-size: 0.84rem;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.55rem, 11vw, 4rem);
+    line-height: 0.98;
+  }
+
+  .hero-lead {
+    font-size: 0.98rem;
+    line-height: 1.8;
+  }
+
+  .hero-subline {
+    font-size: 0.9rem;
   }
 
   .hero-actions {
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero .btn {
+    width: 100%;
+  }
+
+  .hero-visual,
+  .hero-visual-launchpad {
+    min-height: auto;
+  }
+
+  .hero-signal-panel {
+    padding: 1.35rem 1rem 1rem;
+    border-radius: 22px;
+  }
+
+  .signal-kicker {
+    font-size: 0.74rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .signal-lines {
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .signal-lines span {
+    height: 58px;
+    padding: 0 1rem 0 2.55rem;
+    font-size: 0.9rem;
   }
 
   .signal-points {
     grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .signal-points span {
+    min-height: 52px;
+    font-size: 0.9rem;
+    padding: 0.82rem 0.95rem;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 520px) {
+  .hero {
+    padding-top: 7.8rem;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+  }
+
+  .eyebrow::before {
+    width: 26px;
+  }
+
+  .hero-ownerline {
+    margin-bottom: 0.95rem;
+  }
+
+  .hero-lead {
+    margin-top: 1.25rem;
+  }
+
+  .hero-actions {
+    margin-top: 1.6rem;
+  }
+
+  .hero-signal-panel {
+    padding: 1.15rem 0.85rem 0.85rem;
+  }
+
+  .signal-kicker {
+    margin-bottom: 0.82rem;
+    font-size: 0.68rem;
+  }
+
+  .signal-lines span {
+    height: 54px;
+    padding-left: 2.35rem;
+    padding-right: 0.9rem;
+    font-size: 0.86rem;
+  }
+
+  .signal-lines span::after {
+    left: 14px;
+    width: 8px;
+    height: 8px;
+  }
+
+  .signal-points span {
+    border-radius: 14px;
+    padding: 0.78rem 0.9rem;
+    font-size: 0.88rem;
   }
 }
