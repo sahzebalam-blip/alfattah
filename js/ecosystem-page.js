@@ -28,8 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const header = document.querySelector(".site-header");
     const headerOffset = header ? header.offsetHeight + 20 : 100;
-    const top =
-      display.getBoundingClientRect().top + window.scrollY - headerOffset;
+    const top = display.getBoundingClientRect().top + window.scrollY - headerOffset;
 
     window.scrollTo({
       top,
@@ -42,8 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const header = document.querySelector(".site-header");
     const headerOffset = header ? header.offsetHeight + 20 : 100;
-    const top =
-      layersSection.getBoundingClientRect().top + window.scrollY - headerOffset;
+    const top = layersSection.getBoundingClientRect().top + window.scrollY - headerOffset;
 
     window.scrollTo({
       top,
@@ -58,11 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (options.scrollToLayers) {
       scrollLayersIntoView();
-
       window.setTimeout(() => {
         scrollDisplayIntoView();
       }, 240);
-
       return;
     }
 
