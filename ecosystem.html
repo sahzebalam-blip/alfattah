@@ -2,310 +2,195 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>Zubolaa Ecosystem | Connected Systems</title>
-    <meta
-      name="description"
-      content="Explore the connected systems inside the Zubolaa ecosystem through one structured direction layer."
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Existing global CSS can stay -->
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="ecosystem.css" />
+    <title>Zubolaa Ecosystem</title>
 
+    <!-- CSS (IMPORTANT: correct paths) -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+    <link rel="stylesheet" href="css/logic.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- Ecosystem specific -->
+    <link rel="stylesheet" href="css/ecosystem.css" />
+    <link rel="stylesheet" href="css/ecosystem-page.css" />
+
+    <!-- JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-    <script defer src="ecosystem-three.js"></script>
-    <script defer src="ecosystem.js"></script>
+    <script defer src="js/includes.js"></script>
+    <script defer src="js/main.js"></script>
+    <script defer src="js/ecosystem.js"></script>
+    <script defer src="js/ecosystem-three.js"></script>
   </head>
-  <body class="ecosystem-page">
-    <!-- Keep your existing navbar include / markup here -->
-    <!-- Navbar starts -->
 
-    <main class="ecosystem-main">
-      <!-- HERO -->
-      <section class="eco-hero" id="ecosystem-hero">
-        <div class="eco-hero-bg">
-          <canvas id="ecoHeroCanvas" aria-hidden="true"></canvas>
-          <div class="eco-hero-overlay"></div>
-          <div class="eco-hero-grid"></div>
-        </div>
+  <body data-page="ecosystem">
 
-        <div class="eco-container">
+    <!-- GLOBAL -->
+    <div id="global-particles-canvas"></div>
+
+    <div class="site-shell">
+      <div class="page-overlay"></div>
+      <div id="global-ambient-layer"></div>
+
+      <!-- NAVBAR -->
+      <div id="navbar-include"></div>
+
+      <main id="main-content">
+
+        <!-- HERO -->
+        <section class="eco-hero">
+          <canvas id="ecoHeroCanvas"></canvas>
+
           <div class="eco-hero-content">
             <p class="eco-eyebrow">Zubolaa Ecosystem</p>
+
             <h1>Connected Systems. One Structured Direction.</h1>
-            <p class="eco-hero-subline">
+
+            <p class="eco-subline">
               Explore the systems that form the Zubolaa ecosystem, each designed
               for a distinct role within one connected structure.
             </p>
 
             <div class="eco-hero-actions">
-              <a href="#systems" class="eco-btn eco-btn-primary">Explore the Ecosystem</a>
-              <a href="#access-layer" class="eco-btn eco-btn-secondary">Open Access</a>
+              <a href="#systems" class="eco-btn eco-btn-primary">Explore Ecosystem</a>
+              <a href="#access" class="eco-btn eco-btn-secondary">Open Access</a>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="eco-hero-divider" aria-hidden="true"></div>
-      </section>
+        <!-- STATEMENT -->
+        <section class="eco-statement">
+          <p>
+            Each Zubolaa system operates independently while remaining aligned
+            through one shared identity, logic, and direction layer.
+          </p>
+        </section>
 
-      <!-- STATEMENT STRIP -->
-      <section class="eco-statement-strip">
-        <div class="eco-container">
-          <div class="eco-statement-box">
+        <!-- SYSTEMS -->
+        <section class="eco-systems" id="systems">
+
+          <div class="eco-left">
+
+            <div class="eco-card active" data-system="academy">
+              <h3>Academy</h3>
+              <p>Learning, mindset, and structured development.</p>
+            </div>
+
+            <div class="eco-card" data-system="markets">
+              <h3>Markets</h3>
+              <p>Market intelligence and execution clarity.</p>
+            </div>
+
+            <div class="eco-card" data-system="participation">
+              <h3>Participation</h3>
+              <p>Guided involvement through defined pathways.</p>
+            </div>
+
+            <div class="eco-card" data-system="labs">
+              <h3>Labs</h3>
+              <p>Tools, experiments, and evolving capabilities.</p>
+            </div>
+
+            <div class="eco-card" data-system="core">
+              <h3>Core</h3>
+              <p>The central thinking and alignment layer.</p>
+            </div>
+
+            <div class="eco-card" data-system="infrastructure">
+              <h3>Infrastructure</h3>
+              <p>The foundation supporting continuity and scale.</p>
+            </div>
+
+          </div>
+
+          <div class="eco-right" id="eco-detail">
+
+            <h2>Zubolaa Academy</h2>
+
             <p>
-              Each Zubolaa system operates independently while remaining aligned
-              through one shared identity, logic, and direction layer.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- SYSTEMS -->
-      <section class="eco-systems-section" id="systems">
-        <div class="eco-container">
-          <div class="eco-section-head">
-            <p class="eco-section-label">System Layer</p>
-            <h2>Explore the Connected Systems</h2>
-          </div>
-
-          <div class="eco-systems-layout">
-            <!-- LEFT CARDS -->
-            <div
-              class="eco-system-cards"
-              role="tablist"
-              aria-label="Zubolaa systems"
-            >
-              <button
-                class="eco-system-card active"
-                data-system="academy"
-                role="tab"
-                aria-selected="true"
-              >
-                <span class="eco-card-icon">
-                  <span></span>
-                </span>
-                <span class="eco-card-text">
-                  <strong>Zubolaa Academy</strong>
-                  <small>Learning, mindset, and structured development.</small>
-                </span>
-              </button>
-
-              <button
-                class="eco-system-card"
-                data-system="markets"
-                role="tab"
-                aria-selected="false"
-              >
-                <span class="eco-card-icon">
-                  <span></span>
-                </span>
-                <span class="eco-card-text">
-                  <strong>Zubolaa Markets</strong>
-                  <small>Market intelligence and execution clarity.</small>
-                </span>
-              </button>
-
-              <button
-                class="eco-system-card"
-                data-system="participation"
-                role="tab"
-                aria-selected="false"
-              >
-                <span class="eco-card-icon">
-                  <span></span>
-                </span>
-                <span class="eco-card-text">
-                  <strong>Zubolaa Participation</strong>
-                  <small>Guided involvement through defined pathways.</small>
-                </span>
-              </button>
-
-              <button
-                class="eco-system-card"
-                data-system="labs"
-                role="tab"
-                aria-selected="false"
-              >
-                <span class="eco-card-icon">
-                  <span></span>
-                </span>
-                <span class="eco-card-text">
-                  <strong>Zubolaa Labs</strong>
-                  <small>Tools, experiments, and evolving capabilities.</small>
-                </span>
-              </button>
-
-              <button
-                class="eco-system-card"
-                data-system="core"
-                role="tab"
-                aria-selected="false"
-              >
-                <span class="eco-card-icon">
-                  <span></span>
-                </span>
-                <span class="eco-card-text">
-                  <strong>Zubolaa Core</strong>
-                  <small>The central thinking and alignment layer.</small>
-                </span>
-              </button>
-
-              <button
-                class="eco-system-card"
-                data-system="infrastructure"
-                role="tab"
-                aria-selected="false"
-              >
-                <span class="eco-card-icon">
-                  <span></span>
-                </span>
-                <span class="eco-card-text">
-                  <strong>Zubolaa Infrastructure</strong>
-                  <small>The foundation supporting continuity and scale.</small>
-                </span>
-              </button>
-            </div>
-
-            <!-- RIGHT DETAIL PANEL -->
-            <div class="eco-system-panel-wrap">
-              <div class="eco-system-panel">
-                <div class="eco-panel-topline">
-                  <span class="eco-panel-status-dot"></span>
-                  <span class="eco-panel-status-text">Active System View</span>
-                </div>
-
-                <div id="eco-panel-content" class="eco-panel-content">
-                  <h3>Zubolaa Academy</h3>
-                  <p>
-                    A structured learning layer built to support mindset,
-                    knowledge flow, discipline, and long-term development.
-                  </p>
-
-                  <ul class="eco-panel-points">
-                    <li>Structured learning pathways</li>
-                    <li>Mindset and development framework</li>
-                    <li>Guided long-term progression</li>
-                  </ul>
-
-                  <div class="eco-panel-actions">
-                    <a href="#" class="eco-btn eco-btn-primary">Explore</a>
-                    <a href="#" class="eco-btn eco-btn-secondary">Access</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mobile inline detail helper -->
-          <div class="eco-mobile-details" id="ecoMobileDetails" aria-hidden="true"></div>
-        </div>
-      </section>
-
-      <!-- CONNECTION SECTION -->
-      <section class="eco-connection-section">
-        <div class="eco-container">
-          <div class="eco-connection-visual" aria-hidden="true">
-            <span class="eco-node n1"></span>
-            <span class="eco-node n2"></span>
-            <span class="eco-node n3"></span>
-            <span class="eco-node n4"></span>
-            <span class="eco-node n5"></span>
-            <span class="eco-line l1"></span>
-            <span class="eco-line l2"></span>
-            <span class="eco-line l3"></span>
-            <span class="eco-line l4"></span>
-          </div>
-
-          <div class="eco-connection-copy">
-            <p class="eco-section-label">Connection Layer</p>
-            <h2>Designed as a Connected System</h2>
-            <p>
-              Each layer within Zubolaa serves a different function, but all
-              remain connected through a unified access model, shared structure,
-              and consistent system direction.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- PATHWAYS -->
-      <section class="eco-pathways-section">
-        <div class="eco-container">
-          <div class="eco-section-head">
-            <p class="eco-section-label">Direction Paths</p>
-            <h2>Built for Different Directions</h2>
-          </div>
-
-          <div class="eco-pathways-row">
-            <div class="eco-path-card">Learn with structure</div>
-            <div class="eco-path-card">Act with clarity</div>
-            <div class="eco-path-card">Build through systems</div>
-            <div class="eco-path-card">Participate with direction</div>
-            <div class="eco-path-card">Expand through connected layers</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ACCESS LAYER -->
-      <section class="eco-access-section" id="access-layer">
-        <div class="eco-container">
-          <div class="eco-section-head eco-center">
-            <p class="eco-section-label">Unified Entry</p>
-            <h2>One Access Layer Across the Ecosystem</h2>
-            <p class="eco-access-copy">
-              A unified identity system connects users to multiple Zubolaa
-              systems through one structured entry model.
-            </p>
-          </div>
-
-          <div class="eco-access-flow">
-            <div class="eco-access-step">
-              <span class="eco-access-dot"></span>
-              <strong>Login</strong>
-            </div>
-            <div class="eco-access-connector"></div>
-            <div class="eco-access-step">
-              <span class="eco-access-dot"></span>
-              <strong>Access</strong>
-            </div>
-            <div class="eco-access-connector"></div>
-            <div class="eco-access-step">
-              <span class="eco-access-dot"></span>
-              <strong>System Selection</strong>
-            </div>
-            <div class="eco-access-connector"></div>
-            <div class="eco-access-step">
-              <span class="eco-access-dot"></span>
-              <strong>Entry</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FINAL CTA -->
-      <section class="eco-final-cta">
-        <div class="eco-container">
-          <div class="eco-final-box">
-            <p class="eco-section-label">Entry Point</p>
-            <h2>Enter the Zubolaa Ecosystem</h2>
-            <p>
-              Move through connected systems with one structured point of
-              access.
+              A structured learning layer built to support mindset, knowledge,
+              discipline, and long-term development.
             </p>
 
-            <div class="eco-hero-actions eco-final-actions">
-              <a href="#" class="eco-btn eco-btn-primary">Enter Zubolaa</a>
-              <a href="#" class="eco-btn eco-btn-secondary">Open Access</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+            <ul>
+              <li>Structured learning pathways</li>
+              <li>Mindset development system</li>
+              <li>Long-term progression</li>
+            </ul>
 
-    <!-- Keep your existing footer here -->
+            <div class="eco-actions">
+              <a href="#" class="eco-btn eco-btn-primary">Explore</a>
+              <a href="#" class="eco-btn eco-btn-secondary">Access</a>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- CONNECTION -->
+        <section class="eco-connection">
+          <h2>Designed as a Connected System</h2>
+
+          <p>
+            Each layer within Zubolaa serves a different function, but all remain
+            connected through a unified access model, shared structure, and
+            consistent system direction.
+          </p>
+        </section>
+
+        <!-- PATHWAYS -->
+        <section class="eco-pathways">
+
+          <div class="eco-path">Learn with structure</div>
+          <div class="eco-path">Act with clarity</div>
+          <div class="eco-path">Build through systems</div>
+          <div class="eco-path">Participate with direction</div>
+          <div class="eco-path">Expand through connected layers</div>
+
+        </section>
+
+        <!-- ACCESS -->
+        <section class="eco-access" id="access">
+
+          <h2>One Access Layer Across the Ecosystem</h2>
+
+          <div class="eco-flow">
+            <span>Login</span>
+            <span>→</span>
+            <span>Access</span>
+            <span>→</span>
+            <span>System</span>
+            <span>→</span>
+            <span>Entry</span>
+          </div>
+
+        </section>
+
+        <!-- CTA -->
+        <section class="eco-cta">
+
+          <h2>Enter the Zubolaa Ecosystem</h2>
+
+          <p>
+            Move through connected systems with one structured point of access.
+          </p>
+
+          <div class="eco-hero-actions">
+            <a href="#" class="eco-btn eco-btn-primary">Enter Zubolaa</a>
+            <a href="#" class="eco-btn eco-btn-secondary">Open Access</a>
+          </div>
+
+        </section>
+
+      </main>
+
+      <!-- FOOTER -->
+      <div id="footer-include"></div>
+
+    </div>
+
   </body>
 </html>
