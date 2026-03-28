@@ -1,9 +1,10 @@
+/* ========================================
+   ZUBOLAA — RESPONSIVE SYSTEM
+   Full replacement
+======================================== */
+
 /* ---------- Large tablet / compact laptop ---------- */
 @media (max-width: 1120px) {
-  .principles-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .ecosystem-shell {
     grid-template-columns: 1fr;
   }
@@ -24,20 +25,12 @@
     --container: min(100% - 32px, 100%);
   }
 
-  .about.section-card,
-  .connection-logic.section-card,
-  .site-footer,
-  .ecosystem-shell {
+  .site-footer {
     padding: 24px;
   }
 
-  .two-column-grid,
   .footer-top {
     grid-template-columns: 1fr;
-  }
-
-  .principles-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .footer-bottom {
@@ -53,16 +46,8 @@
     --container: min(100% - 20px, 100%);
   }
 
-  .about.section-card,
-  .connection-logic.section-card,
-  .site-footer,
-  .ecosystem-shell,
-  .ecosystem-display {
+  .site-footer {
     padding: 20px;
-  }
-
-  .principles-grid {
-    grid-template-columns: 1fr;
   }
 
   .footer-top {
@@ -81,11 +66,7 @@
     --container: min(100% - 16px, 100%);
   }
 
-  .about.section-card,
-  .connection-logic.section-card,
-  .site-footer,
-  .ecosystem-shell,
-  .ecosystem-display {
+  .site-footer {
     padding: 18px;
   }
 
