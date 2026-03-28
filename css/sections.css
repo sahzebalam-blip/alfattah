@@ -609,6 +609,412 @@
   }
 }
 
+@keyframes aboutNodePulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.45);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.72;
+  }
+}
+
+@keyframes accessNodePulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.45);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.72;
+  }
+}
+
+/* =========================
+   ABOUT PANEL UPGRADE
+========================= */
+
+.about {
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 120, 0.52),
+    rgba(255, 215, 120, 0.18),
+    transparent
+  );
+  box-shadow:
+    0 0 18px rgba(255, 215, 120, 0.24),
+    0 0 34px rgba(255, 215, 120, 0.1);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.about::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 14%;
+  width: 72%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(94, 167, 255, 0.2),
+    rgba(255, 215, 120, 0.2),
+    transparent
+  );
+  box-shadow:
+    0 0 14px rgba(94, 167, 255, 0.12),
+    0 0 22px rgba(255, 215, 120, 0.08);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.about .section-ambient.about-ambient {
+  background:
+    radial-gradient(
+      circle at 82% 34%,
+      rgba(94, 167, 255, 0.055),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 18% 18%,
+      rgba(255, 215, 120, 0.05),
+      transparent 24%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.018) 42%,
+      transparent 68%
+    );
+  opacity: 0.95;
+}
+
+.about-visual-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.78;
+}
+
+.about-line {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 215, 120, 0.34),
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(255, 215, 120, 0.08);
+}
+
+.line-1 {
+  right: 18%;
+  top: 20%;
+  height: 150px;
+}
+
+.line-2 {
+  right: 12%;
+  top: 38%;
+  height: 120px;
+  background: linear-gradient(
+    180deg,
+    rgba(94, 167, 255, 0.3),
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(94, 167, 255, 0.08);
+}
+
+.line-3 {
+  right: 24%;
+  top: 56%;
+  height: 108px;
+}
+
+.about-node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffd56a;
+  box-shadow:
+    0 0 12px rgba(255, 215, 120, 0.58),
+    0 0 22px rgba(255, 215, 120, 0.18);
+  animation: aboutNodePulse 2.8s ease-in-out infinite;
+}
+
+.node-1 {
+  right: 18%;
+  top: 20%;
+}
+
+.node-2 {
+  right: 12%;
+  top: 38%;
+  background: #6fa7ff;
+  box-shadow:
+    0 0 12px rgba(94, 167, 255, 0.5),
+    0 0 20px rgba(94, 167, 255, 0.14);
+  animation-delay: 0.7s;
+}
+
+.node-3 {
+  right: 24%;
+  top: 56%;
+  animation-delay: 1.2s;
+}
+
+.about-connector {
+  position: absolute;
+  left: 37%;
+  right: 19%;
+  top: 69%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 120, 0.16),
+    rgba(94, 167, 255, 0.14),
+    transparent
+  );
+  box-shadow:
+    0 0 12px rgba(255, 215, 120, 0.07),
+    0 0 14px rgba(94, 167, 255, 0.05);
+  opacity: 0.9;
+}
+
+.about .two-column-grid,
+.about .section-head {
+  position: relative;
+  z-index: 3;
+}
+
+/* =========================
+   ACCESS PANEL UPGRADE
+========================= */
+
+.connection-logic {
+  position: relative;
+  overflow: hidden;
+}
+
+.connection-logic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 120, 0.5),
+    rgba(255, 215, 120, 0.16),
+    transparent
+  );
+  box-shadow:
+    0 0 18px rgba(255, 215, 120, 0.22),
+    0 0 30px rgba(255, 215, 120, 0.08);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.connection-logic::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 14%;
+  width: 72%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(94, 167, 255, 0.18),
+    rgba(255, 215, 120, 0.18),
+    transparent
+  );
+  box-shadow:
+    0 0 12px rgba(94, 167, 255, 0.1),
+    0 0 18px rgba(255, 215, 120, 0.06);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.access-visual-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.78;
+}
+
+.access-line {
+  position: absolute;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 215, 120, 0.28),
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(255, 215, 120, 0.06);
+}
+
+.access-line-1 {
+  right: 19%;
+  top: 22%;
+  height: 138px;
+}
+
+.access-line-2 {
+  right: 13%;
+  top: 40%;
+  height: 120px;
+  background: linear-gradient(
+    180deg,
+    rgba(94, 167, 255, 0.26),
+    transparent
+  );
+  box-shadow: 0 0 10px rgba(94, 167, 255, 0.06);
+}
+
+.access-line-3 {
+  right: 24%;
+  top: 58%;
+  height: 102px;
+}
+
+.access-node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffd56a;
+  box-shadow:
+    0 0 12px rgba(255, 215, 120, 0.52),
+    0 0 20px rgba(255, 215, 120, 0.14);
+  animation: accessNodePulse 2.8s ease-in-out infinite;
+}
+
+.access-node-1 {
+  right: 19%;
+  top: 22%;
+}
+
+.access-node-2 {
+  right: 13%;
+  top: 40%;
+  background: #6fa7ff;
+  box-shadow:
+    0 0 12px rgba(94, 167, 255, 0.45),
+    0 0 18px rgba(94, 167, 255, 0.12);
+  animation-delay: 0.7s;
+}
+
+.access-node-3 {
+  right: 24%;
+  top: 58%;
+  animation-delay: 1.2s;
+}
+
+.access-connector {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 120, 0.16),
+    rgba(94, 167, 255, 0.12),
+    transparent
+  );
+  box-shadow:
+    0 0 10px rgba(255, 215, 120, 0.05),
+    0 0 12px rgba(94, 167, 255, 0.04);
+}
+
+.access-connector-1 {
+  left: 38%;
+  right: 18%;
+  top: 63%;
+}
+
+.access-connector-2 {
+  left: 43%;
+  right: 24%;
+  top: 73%;
+}
+
+.connection-logic .section-head,
+.connection-logic .logic-pill-flow,
+.connection-logic .section-lead {
+  position: relative;
+  z-index: 3;
+}
+
+/* =========================
+   LOGIC FLOW FIX
+========================= */
+
+.logic-pill-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin: 2rem auto 1.4rem;
+  max-width: 980px;
+}
+
+.logic-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.8rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(17, 22, 34, 0.62);
+  border: 1px solid rgba(255, 215, 120, 0.08);
+  color: rgba(241, 245, 252, 0.92);
+  font-size: 0.94rem;
+  font-weight: 600;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 10px 22px rgba(0, 0, 0, 0.16);
+}
+
+.logic-divider {
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 215, 120, 0.24),
+    rgba(94, 167, 255, 0.14)
+  );
+  box-shadow: 0 0 10px rgba(255, 215, 120, 0.06);
+}
+
 /* =========================
    TABLET
 ========================= */
@@ -645,6 +1051,82 @@
 
   .transition-line {
     padding: 2.6rem 1rem 2.4rem;
+  }
+
+  .line-1 {
+    right: 12%;
+    top: 22%;
+  }
+
+  .line-2 {
+    right: 7%;
+    top: 40%;
+  }
+
+  .line-3 {
+    right: 18%;
+    top: 58%;
+  }
+
+  .node-1 {
+    right: 12%;
+    top: 22%;
+  }
+
+  .node-2 {
+    right: 7%;
+    top: 40%;
+  }
+
+  .node-3 {
+    right: 18%;
+    top: 58%;
+  }
+
+  .about-connector {
+    left: 34%;
+    right: 12%;
+    top: 71%;
+  }
+
+  .access-line-1 {
+    right: 12%;
+    top: 24%;
+  }
+
+  .access-line-2 {
+    right: 7%;
+    top: 42%;
+  }
+
+  .access-line-3 {
+    right: 18%;
+    top: 60%;
+  }
+
+  .access-node-1 {
+    right: 12%;
+    top: 24%;
+  }
+
+  .access-node-2 {
+    right: 7%;
+    top: 42%;
+  }
+
+  .access-node-3 {
+    right: 18%;
+    top: 60%;
+  }
+
+  .access-connector-1 {
+    left: 34%;
+    right: 12%;
+  }
+
+  .access-connector-2 {
+    left: 40%;
+    right: 18%;
   }
 }
 
@@ -722,6 +1204,37 @@
   .panel-title {
     font-size: 1rem;
   }
+
+  .about-visual-layer,
+  .access-visual-layer {
+    display: none;
+  }
+
+  .about::before,
+  .connection-logic::before {
+    left: 8%;
+    width: 84%;
+  }
+
+  .about::after,
+  .connection-logic::after {
+    left: 10%;
+    width: 80%;
+  }
+
+  .logic-pill-flow {
+    gap: 0.65rem;
+  }
+
+  .logic-pill {
+    min-height: 44px;
+    padding: 0.72rem 0.95rem;
+    font-size: 0.88rem;
+  }
+
+  .logic-divider {
+    width: 18px;
+  }
 }
 
 /* =========================
@@ -763,262 +1276,5 @@
 
   .panel-line {
     font-size: 0.92rem;
-  }
-}
-/* =========================
-   ABOUT PANEL UPGRADE
-========================= */
-
-.about {
-  position: relative;
-  overflow: hidden;
-}
-
-/* stronger premium top glow */
-.about::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 10%;
-  width: 80%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 215, 120, 0.52),
-    rgba(255, 215, 120, 0.18),
-    transparent
-  );
-  box-shadow:
-    0 0 18px rgba(255, 215, 120, 0.24),
-    0 0 34px rgba(255, 215, 120, 0.1);
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* softer bottom reflection glow */
-.about::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 14%;
-  width: 72%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(94, 167, 255, 0.2),
-    rgba(255, 215, 120, 0.2),
-    transparent
-  );
-  box-shadow:
-    0 0 14px rgba(94, 167, 255, 0.12),
-    0 0 22px rgba(255, 215, 120, 0.08);
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* subtle interior glow wash */
-.about .section-ambient.about-ambient {
-  background:
-    radial-gradient(
-      circle at 82% 34%,
-      rgba(94, 167, 255, 0.055),
-      transparent 26%
-    ),
-    radial-gradient(
-      circle at 18% 18%,
-      rgba(255, 215, 120, 0.05),
-      transparent 24%
-    ),
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.018) 42%,
-      transparent 68%
-    );
-  opacity: 0.95;
-}
-
-/* right-side architecture layer */
-.about-visual-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.78;
-}
-
-/* vertical architecture lines */
-.about-line {
-  position: absolute;
-  width: 1px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 215, 120, 0.34),
-    transparent
-  );
-  box-shadow: 0 0 10px rgba(255, 215, 120, 0.08);
-}
-
-.line-1 {
-  right: 18%;
-  top: 20%;
-  height: 150px;
-}
-
-.line-2 {
-  right: 12%;
-  top: 38%;
-  height: 120px;
-  background: linear-gradient(
-    180deg,
-    rgba(94, 167, 255, 0.3),
-    transparent
-  );
-  box-shadow: 0 0 10px rgba(94, 167, 255, 0.08);
-}
-
-.line-3 {
-  right: 24%;
-  top: 56%;
-  height: 108px;
-}
-
-/* pulse nodes */
-.about-node {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #ffd56a;
-  box-shadow:
-    0 0 12px rgba(255, 215, 120, 0.58),
-    0 0 22px rgba(255, 215, 120, 0.18);
-  animation: aboutNodePulse 2.8s ease-in-out infinite;
-}
-
-.node-1 {
-  right: 18%;
-  top: 20%;
-}
-
-.node-2 {
-  right: 12%;
-  top: 38%;
-  background: #6fa7ff;
-  box-shadow:
-    0 0 12px rgba(94, 167, 255, 0.5),
-    0 0 20px rgba(94, 167, 255, 0.14);
-  animation-delay: 0.7s;
-}
-
-.node-3 {
-  right: 24%;
-  top: 56%;
-  animation-delay: 1.2s;
-}
-
-/* horizontal connector between lower text blocks */
-.about-connector {
-  position: absolute;
-  left: 37%;
-  right: 19%;
-  top: 69%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 215, 120, 0.16),
-    rgba(94, 167, 255, 0.14),
-    transparent
-  );
-  box-shadow:
-    0 0 12px rgba(255, 215, 120, 0.07),
-    0 0 14px rgba(94, 167, 255, 0.05);
-  opacity: 0.9;
-}
-
-/* make inside text feel more placed */
-.about .two-column-grid {
-  position: relative;
-  z-index: 3;
-}
-
-/* keep heading area above visuals */
-.about .section-head {
-  position: relative;
-  z-index: 3;
-}
-
-/* pulse */
-@keyframes aboutNodePulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.72;
-  }
-  50% {
-    transform: scale(1.45);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.95);
-    opacity: 0.72;
-  }
-}
-
-/* tablet */
-@media (max-width: 1080px) {
-  .line-1 {
-    right: 12%;
-    top: 22%;
-  }
-
-  .line-2 {
-    right: 7%;
-    top: 40%;
-  }
-
-  .line-3 {
-    right: 18%;
-    top: 58%;
-  }
-
-  .node-1 {
-    right: 12%;
-    top: 22%;
-  }
-
-  .node-2 {
-    right: 7%;
-    top: 40%;
-  }
-
-  .node-3 {
-    right: 18%;
-    top: 58%;
-  }
-
-  .about-connector {
-    left: 34%;
-    right: 12%;
-    top: 71%;
-  }
-}
-
-/* mobile - keep only subtle border glow, remove clutter */
-@media (max-width: 768px) {
-  .about-visual-layer {
-    display: none;
-  }
-
-  .about::before {
-    left: 8%;
-    width: 84%;
-  }
-
-  .about::after {
-    left: 10%;
-    width: 80%;
   }
 }
